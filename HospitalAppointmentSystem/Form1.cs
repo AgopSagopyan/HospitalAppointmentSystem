@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using HastaneRandevuSistemi.Views.Pages;
 using MySql.Data.MySqlClient;
 using OnlyWorks.services;
 using OnlyWorks.views;
@@ -18,7 +19,7 @@ namespace OnlyWorks
 
             NavigationService.MainPanel = panel1;
 
-            NavigationService.NavigateTo(new LoginPage());
+            NavigationService.NavigateTo(new AnaSayfa2());
 
 
 
