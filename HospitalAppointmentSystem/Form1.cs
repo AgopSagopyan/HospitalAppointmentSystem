@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using HastaneRandevuSistemi.Views.Pages;
+using HospitalAppointmentSystem.views;
+using HospitalAppointmentSystem.views.admin;
 using MySql.Data.MySqlClient;
 using OnlyWorks.services;
 using OnlyWorks.views;
@@ -19,7 +21,7 @@ namespace OnlyWorks
 
             NavigationService.MainPanel = panel1;
 
-            NavigationService.NavigateTo(new AdminPage());
+            NavigationService.NavigateTo(new LoginPage());
 
 
 

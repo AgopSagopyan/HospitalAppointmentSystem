@@ -100,6 +100,7 @@ namespace OnlyWorks.repositories
                             Id = reader.GetInt32("id"),
                             Name = reader.GetString("doctor_name"),
                             Profession = reader.GetString("profession"),
+                            DoctorImagePath = reader.GetString("doctor_image_path")
                         };
                         doctors.Add(doctor);
                     }
@@ -168,6 +169,36 @@ namespace OnlyWorks.repositories
 
             }
             return professions;
+        }
+        public List<Comment> GetAllComments()
+        {
+            List<Comment> comments = new List<Comment>();
+
+            using (MySqlConnection conn = new MySqlConnection(_connectionstring))
+            {
+                conn.Open();
+
+                string query = "SELECT * FROM comments";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Comment comment = new Comment
+                        {
+                            Id = reader.GetInt32("id"),
+                            Sender = reader.GetString("sender"),
+                            SubjectDoctor = reader.GetString("subject_doctor"),
+                            Content = reader.GetString("content"),
+                        };
+
+                        comments.Add(comment);
+                    }
+                }
+            }
+            return comments;
         }
 
         public Patient PatientLogin(string email, string password)
@@ -313,6 +344,32 @@ namespace OnlyWorks.repositories
             }
         }
 
+        public void SendComment(string sender, string subject_doctor, string content)
+        {
+            using(MySqlConnection conn = new MySqlConnection(_connectionstring))
+            {
+                conn.Open();
+
+                string query = "INSERT INTO comments (sender, subject_doctor, content) VALUES (@sender, @subject_doctor, @content)";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@sender", sender);
+                    cmd.Parameters.AddWithValue("@subject_doctor", subject_doctor);
+                    cmd.Parameters.AddWithValue("@content", content);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected != 0) {
+                        MessageBox.Show("Write Successful");
+                    }
+
+                }
+            }
+        }
+
+
+
         public void AddAppointment(string clinic, string doctorName, DateTime date, TimeSpan start_time, TimeSpan end_time) {
             using (MySqlConnection conn = new MySqlConnection(_connectionstring)) {
                 conn.Open();
@@ -354,25 +411,25 @@ namespace OnlyWorks.repositories
             } 
         }
 
-        public void AddDoctor(string name, string profession)
+
+        public void AddDoctor(string name, string profession, string doctor_image_path)
         {
             using(MySqlConnection conn = new MySqlConnection(_connectionstring))
             {
                 conn.Open();
                 
-                string query = "INSERT INTO doctors (doctor_name, profession) VALUES (@doctor_name, @profession)";
+                string query = "INSERT INTO doctors (doctor_name, profession, doctor_image_path) VALUES (@doctor_name, @profession, @doctor_image_path)";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@doctor_name", name);
                     cmd.Parameters.AddWithValue("@profession", profession);
+                    cmd.Parameters.AddWithValue("@doctor_image_path", doctor_image_path);
 
                     int rowsAffected = cmd.ExecuteNonQuery();
                     if (rowsAffected > 0) {
-
                         MessageBox.Show("Yazma Başarılı");
                     }
-
                 }
             }
         }
@@ -406,12 +463,21 @@ namespace OnlyWorks.repositories
         public string Name { get; set; }
 
         public string Profession { get; set; }
+        public string DoctorImagePath { get; set; }
     }
 
     public class Profession
     {
         public int Id { get; set; }
         public string ProfessionName { get; set; }
+    }
+
+    public class Comment
+    {
+        public int Id { get; set; }
+        public string Sender {  get; set; }
+        public string SubjectDoctor { get; set; }
+        public string Content { get; set; }
     }
 
 }

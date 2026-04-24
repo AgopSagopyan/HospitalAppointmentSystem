@@ -19,7 +19,13 @@ namespace OnlyWorks.views.admin
         private AdminDoctorsController _controller;
         private MainRepository _repo;
 
-        private string uploadDirectory = ".\\uplaods\\";
+        private string lastUploadedFilePath;
+
+
+        // Path.Combine is the industry standard for joining paths
+        private string uploadDirectory = Path.Combine(Application.StartupPath, "..\\..\\..\\uploads");
+
+
 
         public AdminDoctors()
         {
@@ -40,7 +46,7 @@ namespace OnlyWorks.views.admin
 
         private void btn_addDoctor_Click_1(object sender, EventArgs e)
         {
-            _repo.AddDoctor(txt_doctorName.Text, combo_profession.Text);
+            _repo.AddDoctor(txt_doctorName.Text, combo_profession.Text, lastUploadedFilePath);
             dataGridView1.DataSource = _repo.GetAllDoctors();
         }
 
@@ -64,6 +70,8 @@ namespace OnlyWorks.views.admin
                         string destinationPath = Path.Combine(uploadDirectory, fileName);
 
                         File.Copy(ofd.FileName, destinationPath);
+
+                        lastUploadedFilePath = destinationPath;
 
                         MessageBox.Show("Success");
 
