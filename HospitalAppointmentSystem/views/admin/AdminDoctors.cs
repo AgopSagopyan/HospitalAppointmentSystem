@@ -4,9 +4,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Google.Protobuf;
 using OnlyWorks.controllers.admin;
 using OnlyWorks.repositories;
 
@@ -16,6 +18,8 @@ namespace OnlyWorks.views.admin
     {
         private AdminDoctorsController _controller;
         private MainRepository _repo;
+
+        private string uploadDirectory = ".\\uplaods\\";
 
         public AdminDoctors()
         {
@@ -38,6 +42,39 @@ namespace OnlyWorks.views.admin
         {
             _repo.AddDoctor(txt_doctorName.Text, combo_profession.Text);
             dataGridView1.DataSource = _repo.GetAllDoctors();
+        }
+
+        private void btn_imagePicker_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "Image Files(*.jpg; *.jpeg; *.png)|*.jpg; *.jpeg; *.png";
+
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        if (!Directory.Exists(uploadDirectory))
+                        {
+                            Directory.CreateDirectory(uploadDirectory);
+                        }
+
+                        string extension = Path.GetExtension(ofd.FileName);
+                        string fileName = Guid.NewGuid().ToString() + extension;
+                        string destinationPath = Path.Combine(uploadDirectory, fileName);
+
+                        File.Copy(ofd.FileName, destinationPath);
+
+                        MessageBox.Show("Success");
+
+                        
+
+                    } catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
         }
     }
 }

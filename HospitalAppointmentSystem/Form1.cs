@@ -19,7 +19,7 @@ namespace OnlyWorks
 
             NavigationService.MainPanel = panel1;
 
-            NavigationService.NavigateTo(new AnaSayfa2());
+            NavigationService.NavigateTo(new AdminPage());
 
 
 

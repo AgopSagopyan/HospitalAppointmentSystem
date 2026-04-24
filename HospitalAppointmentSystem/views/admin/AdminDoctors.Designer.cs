@@ -35,6 +35,9 @@
             label2 = new Label();
             label3 = new Label();
             combo_profession = new ComboBox();
+            openFileDialog1 = new OpenFileDialog();
+            label4 = new Label();
+            btn_imagePicker = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -51,14 +54,14 @@
             // 
             // txt_doctorName
             // 
-            txt_doctorName.Location = new Point(378, 116);
+            txt_doctorName.Location = new Point(99, 150);
             txt_doctorName.Name = "txt_doctorName";
             txt_doctorName.Size = new Size(247, 23);
             txt_doctorName.TabIndex = 1;
             // 
             // btn_addDoctor
             // 
-            btn_addDoctor.Location = new Point(378, 239);
+            btn_addDoctor.Location = new Point(99, 589);
             btn_addDoctor.Name = "btn_addDoctor";
             btn_addDoctor.Size = new Size(247, 53);
             btn_addDoctor.TabIndex = 4;
@@ -69,16 +72,16 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(138, 319);
+            dataGridView1.Location = new Point(540, 130);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(739, 344);
+            dataGridView1.Size = new Size(516, 532);
             dataGridView1.TabIndex = 5;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.ForeColor = Color.White;
-            label2.Location = new Point(378, 96);
+            label2.Location = new Point(99, 130);
             label2.Name = "label2";
             label2.Size = new Size(78, 15);
             label2.TabIndex = 6;
@@ -88,7 +91,7 @@
             // 
             label3.AutoSize = true;
             label3.ForeColor = Color.White;
-            label3.Location = new Point(378, 161);
+            label3.Location = new Point(99, 195);
             label3.Name = "label3";
             label3.Size = new Size(62, 15);
             label3.TabIndex = 7;
@@ -97,16 +100,42 @@
             // combo_profession
             // 
             combo_profession.FormattingEnabled = true;
-            combo_profession.Location = new Point(378, 182);
+            combo_profession.Location = new Point(99, 216);
             combo_profession.Name = "combo_profession";
             combo_profession.Size = new Size(247, 23);
             combo_profession.TabIndex = 8;
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(99, 261);
+            label4.Name = "label4";
+            label4.Size = new Size(40, 15);
+            label4.TabIndex = 9;
+            label4.Text = "Image";
+            // 
+            // btn_imagePicker
+            // 
+            btn_imagePicker.Location = new Point(101, 285);
+            btn_imagePicker.Name = "btn_imagePicker";
+            btn_imagePicker.Size = new Size(127, 28);
+            btn_imagePicker.TabIndex = 10;
+            btn_imagePicker.Text = "Choose an Image";
+            btn_imagePicker.UseVisualStyleBackColor = true;
+            btn_imagePicker.Click += btn_imagePicker_Click;
             // 
             // AdminDoctors
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(30, 30, 30);
+            Controls.Add(btn_imagePicker);
+            Controls.Add(label4);
             Controls.Add(combo_profession);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -132,5 +161,8 @@
         private Label label2;
         private Label label3;
         private ComboBox combo_profession;
+        private OpenFileDialog openFileDialog1;
+        private Label label4;
+        private Button btn_imagePicker;
     }
 }
