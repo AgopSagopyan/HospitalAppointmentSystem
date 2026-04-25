@@ -224,6 +224,7 @@
             btn_sendCode.Text = "Sign Up";
             btn_sendCode.UseVisualStyleBackColor = false;
             btn_sendCode.Click += btn_sendCode_Click;
+            btn_sendCode.Click += btn_sendCode_click;
             // 
             // txtBox_email
             // 

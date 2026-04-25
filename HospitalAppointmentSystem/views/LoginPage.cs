@@ -29,8 +29,23 @@ namespace OnlyWorks.views
 
         private void btn_login_Click(object sender, EventArgs e)
         {
+            string email = txt_email.Text;
+
+            // @ kontrolü
+            if (!email.Contains("@"))
+            {
+                MessageBox.Show("Geçersiz email! Lütfen '@' içeren bir email girin.",
+                                "Uyarı",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
+        }
+        private void btn_login_click(object sender, EventArgs e)     
+        {
             _controller.PatientLogin(txt_email.Text, txt_password.Text);
         }
+
 
         private void link_goToSignup_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {

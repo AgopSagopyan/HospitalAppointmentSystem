@@ -51,7 +51,21 @@ namespace OnlyWorks.views
             timer1.Start();
 
         }
+        private void btn_sendCode_click(object sender, EventArgs e)
+        {
+            string email = txtBox_email.Text;
 
+            // @ kontrolü
+            if (!email.Contains("@"))
+            {
+                MessageBox.Show("Geçersiz email! Lütfen '@' içeren bir email girin.",
+                                "Uyarı",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
+
+        }
         private void btn_verificate_Click(object sender, EventArgs e)
         {
             if (txtBox_verificationCode.Text == verificationCode)
