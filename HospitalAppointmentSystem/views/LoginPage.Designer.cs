@@ -28,68 +28,61 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginPage));
             txt_email = new TextBox();
             txt_password = new TextBox();
             btn_login = new Button();
-            panel1 = new Panel();
             link_goToForgotPassword = new LinkLabel();
             link_goToSignup = new LinkLabel();
             label3 = new Label();
             label2 = new Label();
-            label1 = new Label();
+            panelLeft = new Panel();
+            panel1 = new Panel();
             pictureBox1 = new PictureBox();
+            label1 = new Label();
+            label4 = new Label();
+            panelLeft.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // txt_email
             // 
-            txt_email.Location = new Point(213, 233);
+            txt_email.BackColor = Color.FromArgb(240, 240, 240);
+            txt_email.BorderStyle = BorderStyle.FixedSingle;
+            txt_email.Location = new Point(273, 261);
             txt_email.Name = "txt_email";
-            txt_email.Size = new Size(201, 23);
+            txt_email.Size = new Size(250, 23);
             txt_email.TabIndex = 0;
             // 
             // txt_password
             // 
-            txt_password.Location = new Point(212, 316);
+            txt_password.BackColor = Color.FromArgb(240, 240, 240);
+            txt_password.BorderStyle = BorderStyle.FixedSingle;
+            txt_password.Location = new Point(274, 351);
             txt_password.Name = "txt_password";
-            txt_password.Size = new Size(201, 23);
+            txt_password.Size = new Size(250, 23);
             txt_password.TabIndex = 1;
             // 
             // btn_login
             // 
-            btn_login.BackColor = SystemColors.Highlight;
-            btn_login.FlatStyle = FlatStyle.Popup;
+            btn_login.BackColor = Color.FromArgb(37, 99, 235);
+            btn_login.FlatAppearance.BorderSize = 0;
+            btn_login.FlatStyle = FlatStyle.Flat;
             btn_login.ForeColor = Color.White;
-            btn_login.Location = new Point(212, 392);
+            btn_login.Location = new Point(273, 424);
             btn_login.Name = "btn_login";
-            btn_login.Size = new Size(200, 47);
+            btn_login.Size = new Size(250, 40);
             btn_login.TabIndex = 2;
             btn_login.Text = "Log In";
             btn_login.UseVisualStyleBackColor = false;
             btn_login.Click += btn_login_Click;
             // 
-            // panel1
-            // 
-            panel1.BackColor = Color.FromArgb(45, 45, 45);
-            panel1.Controls.Add(link_goToForgotPassword);
-            panel1.Controls.Add(link_goToSignup);
-            panel1.Controls.Add(label3);
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(txt_email);
-            panel1.Controls.Add(btn_login);
-            panel1.Controls.Add(txt_password);
-            panel1.Location = new Point(640, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(640, 720);
-            panel1.TabIndex = 3;
-            // 
             // link_goToForgotPassword
             // 
             link_goToForgotPassword.AutoSize = true;
             link_goToForgotPassword.LinkColor = SystemColors.Highlight;
-            link_goToForgotPassword.Location = new Point(234, 507);
+            link_goToForgotPassword.Location = new Point(433, 499);
             link_goToForgotPassword.Name = "link_goToForgotPassword";
             link_goToForgotPassword.Size = new Size(144, 15);
             link_goToForgotPassword.TabIndex = 7;
@@ -101,7 +94,7 @@
             // 
             link_goToSignup.AutoSize = true;
             link_goToSignup.LinkColor = SystemColors.Highlight;
-            link_goToSignup.Location = new Point(234, 469);
+            link_goToSignup.Location = new Point(238, 499);
             link_goToSignup.Name = "link_goToSignup";
             link_goToSignup.Size = new Size(152, 15);
             link_goToSignup.TabIndex = 6;
@@ -112,53 +105,96 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 162);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(212, 298);
+            label3.Location = new Point(273, 313);
             label3.Name = "label3";
-            label3.Size = new Size(57, 15);
+            label3.Size = new Size(70, 20);
             label3.TabIndex = 5;
             label3.Text = "Password";
             // 
             // label2
             // 
             label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 162);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(212, 215);
+            label2.Location = new Point(273, 226);
             label2.Name = "label2";
-            label2.Size = new Size(36, 15);
+            label2.Size = new Size(46, 20);
             label2.TabIndex = 4;
             label2.Text = "Email";
+            // 
+            // panelLeft
+            // 
+            panelLeft.BackColor = Color.FromArgb(240, 245, 250);
+            panelLeft.Controls.Add(pictureBox1);
+            panelLeft.Dock = DockStyle.Left;
+            panelLeft.Location = new Point(0, 0);
+            panelLeft.Name = "panelLeft";
+            panelLeft.Size = new Size(500, 720);
+            panelLeft.TabIndex = 8;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(label4);
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(link_goToForgotPassword);
+            panel1.Controls.Add(txt_email);
+            panel1.Controls.Add(link_goToSignup);
+            panel1.Controls.Add(label3);
+            panel1.Controls.Add(btn_login);
+            panel1.Controls.Add(txt_password);
+            panel1.Controls.Add(label2);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(500, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(780, 720);
+            panel1.TabIndex = 9;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Dock = DockStyle.Fill;
+            pictureBox1.ErrorImage = (Image)resources.GetObject("pictureBox1.ErrorImage");
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(500, 720);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(264, 151);
+            label1.Location = new Point(340, 110);
             label1.Name = "label1";
-            label1.Size = new Size(104, 45);
-            label1.TabIndex = 3;
+            label1.Size = new Size(94, 40);
+            label1.TabIndex = 8;
             label1.Text = "Login";
             // 
-            // pictureBox1
+            // label4
             // 
-            pictureBox1.Image = HospitalAppointmentSystem.Properties.Resources.Vector_doctor_examining_a_patient_at_the_clinic_portraying_20_qualities_that_make_a_good_doctor_1200x900;
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(640, 720);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 4;
-            pictureBox1.TabStop = false;
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            label4.ForeColor = Color.LightGray;
+            label4.Location = new Point(273, 175);
+            label4.Name = "label4";
+            label4.Size = new Size(232, 20);
+            label4.TabIndex = 9;
+            label4.Text = "Hoş Geldiniz ! Lütfen giriş yapınız.";
             // 
             // LoginPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(30, 30, 30);
-            Controls.Add(pictureBox1);
+            BackColor = Color.FromArgb(15, 23, 42);
             Controls.Add(panel1);
+            Controls.Add(panelLeft);
             Name = "LoginPage";
             Size = new Size(1280, 720);
+            panelLeft.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -170,12 +206,14 @@
         private TextBox txt_email;
         private TextBox txt_password;
         private Button btn_login;
-        private Panel panel1;
         private Label label2;
-        private Label label1;
         private Label label3;
         private LinkLabel link_goToSignup;
         private LinkLabel link_goToForgotPassword;
+        private Panel panelLeft;
         private PictureBox pictureBox1;
+        private Panel panel1;
+        private Label label4;
+        private Label label1;
     }
 }

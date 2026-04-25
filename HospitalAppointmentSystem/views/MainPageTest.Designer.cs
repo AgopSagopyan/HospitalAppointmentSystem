@@ -42,20 +42,20 @@
             label3 = new Label();
             label2 = new Label();
             panel2 = new Panel();
-            label4 = new Label();
-            comboBox1 = new ComboBox();
-            label5 = new Label();
-            label6 = new Label();
-            comboBox2 = new ComboBox();
-            label7 = new Label();
-            comboBox3 = new ComboBox();
             button7 = new Button();
+            comboBox3 = new ComboBox();
+            label7 = new Label();
+            comboBox2 = new ComboBox();
+            label6 = new Label();
+            label5 = new Label();
+            comboBox1 = new ComboBox();
+            label4 = new Label();
             label8 = new Label();
             panel3 = new Panel();
-            pictureBox1 = new PictureBox();
-            label9 = new Label();
-            label10 = new Label();
             button8 = new Button();
+            label10 = new Label();
+            label9 = new Label();
+            pictureBox1 = new PictureBox();
             panel4 = new Panel();
             button9 = new Button();
             label11 = new Label();
@@ -254,83 +254,6 @@
             panel2.Size = new Size(474, 220);
             panel2.TabIndex = 3;
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(159, 18);
-            label4.Name = "label4";
-            label4.Size = new Size(165, 30);
-            label4.TabIndex = 0;
-            label4.Text = "Hızlı Randevu Al";
-            // 
-            // comboBox1
-            // 
-            comboBox1.BackColor = Color.FromArgb(15, 23, 42);
-            comboBox1.FlatStyle = FlatStyle.Flat;
-            comboBox1.ForeColor = Color.White;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(203, 65);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 1;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            label5.ForeColor = Color.White;
-            label5.Location = new Point(61, 65);
-            label5.Name = "label5";
-            label5.Size = new Size(58, 21);
-            label5.TabIndex = 2;
-            label5.Text = "Doktor";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            label6.ForeColor = Color.White;
-            label6.Location = new Point(61, 111);
-            label6.Name = "label6";
-            label6.Size = new Size(43, 21);
-            label6.TabIndex = 3;
-            label6.Text = "Tarih";
-            // 
-            // comboBox2
-            // 
-            comboBox2.BackColor = Color.FromArgb(15, 23, 42);
-            comboBox2.FlatStyle = FlatStyle.Flat;
-            comboBox2.ForeColor = Color.White;
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(203, 111);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(121, 23);
-            comboBox2.TabIndex = 4;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            label7.ForeColor = Color.White;
-            label7.Location = new Point(61, 161);
-            label7.Name = "label7";
-            label7.Size = new Size(40, 21);
-            label7.TabIndex = 5;
-            label7.Text = "Saat";
-            // 
-            // comboBox3
-            // 
-            comboBox3.BackColor = Color.FromArgb(15, 23, 42);
-            comboBox3.FlatStyle = FlatStyle.Flat;
-            comboBox3.ForeColor = Color.White;
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(203, 161);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(121, 23);
-            comboBox3.TabIndex = 5;
-            // 
             // button7
             // 
             button7.BackColor = Color.FromArgb(37, 99, 235);
@@ -344,6 +267,83 @@
             button7.TabIndex = 6;
             button7.Text = "Randevu Oluştur";
             button7.UseVisualStyleBackColor = false;
+            // 
+            // comboBox3
+            // 
+            comboBox3.BackColor = Color.FromArgb(15, 23, 42);
+            comboBox3.FlatStyle = FlatStyle.Flat;
+            comboBox3.ForeColor = Color.White;
+            comboBox3.FormattingEnabled = true;
+            comboBox3.Location = new Point(203, 161);
+            comboBox3.Name = "comboBox3";
+            comboBox3.Size = new Size(121, 23);
+            comboBox3.TabIndex = 5;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            label7.ForeColor = Color.White;
+            label7.Location = new Point(61, 161);
+            label7.Name = "label7";
+            label7.Size = new Size(40, 21);
+            label7.TabIndex = 5;
+            label7.Text = "Saat";
+            // 
+            // comboBox2
+            // 
+            comboBox2.BackColor = Color.FromArgb(15, 23, 42);
+            comboBox2.FlatStyle = FlatStyle.Flat;
+            comboBox2.ForeColor = Color.White;
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(203, 111);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(121, 23);
+            comboBox2.TabIndex = 4;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            label6.ForeColor = Color.White;
+            label6.Location = new Point(61, 111);
+            label6.Name = "label6";
+            label6.Size = new Size(43, 21);
+            label6.TabIndex = 3;
+            label6.Text = "Tarih";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(61, 65);
+            label5.Name = "label5";
+            label5.Size = new Size(58, 21);
+            label5.TabIndex = 2;
+            label5.Text = "Doktor";
+            // 
+            // comboBox1
+            // 
+            comboBox1.BackColor = Color.FromArgb(15, 23, 42);
+            comboBox1.FlatStyle = FlatStyle.Flat;
+            comboBox1.ForeColor = Color.White;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(203, 65);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 23);
+            comboBox1.TabIndex = 1;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(159, 18);
+            label4.Name = "label4";
+            label4.Size = new Size(165, 30);
+            label4.TabIndex = 0;
+            label4.Text = "Hızlı Randevu Al";
             // 
             // label8
             // 
@@ -368,37 +368,6 @@
             panel3.Size = new Size(190, 242);
             panel3.TabIndex = 5;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.ErrorImage = (Image)resources.GetObject("pictureBox1.ErrorImage");
-            pictureBox1.Location = new Point(51, 16);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(80, 80);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            label9.ForeColor = Color.White;
-            label9.Location = new Point(30, 110);
-            label9.Name = "label9";
-            label9.Size = new Size(130, 20);
-            label9.TabIndex = 1;
-            label9.Text = "Dr.Boran Gazioğlu";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            label10.ForeColor = Color.WhiteSmoke;
-            label10.Location = new Point(59, 144);
-            label10.Name = "label10";
-            label10.Size = new Size(72, 17);
-            label10.TabIndex = 2;
-            label10.Text = "Kardiyolog";
-            // 
             // button8
             // 
             button8.BackColor = Color.FromArgb(37, 99, 235);
@@ -412,6 +381,39 @@
             button8.TabIndex = 3;
             button8.Text = "Randevu Al";
             button8.UseVisualStyleBackColor = false;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            label10.ForeColor = Color.WhiteSmoke;
+            label10.Location = new Point(59, 144);
+            label10.Name = "label10";
+            label10.Size = new Size(72, 17);
+            label10.TabIndex = 2;
+            label10.Text = "Kardiyolog";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            label9.ForeColor = Color.White;
+            label9.Location = new Point(30, 110);
+            label9.Name = "label9";
+            label9.Size = new Size(130, 20);
+            label9.TabIndex = 1;
+            label9.Text = "Dr.Boran Gazioğlu";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.ErrorImage = (Image)resources.GetObject("pictureBox1.ErrorImage");
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(51, 16);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(80, 80);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
             // 
             // panel4
             // 
