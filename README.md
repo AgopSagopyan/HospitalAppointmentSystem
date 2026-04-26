@@ -47,7 +47,7 @@ The system relies on a relational database consisting of the following core tabl
 
 2. **Database Configuration:**
    - Create a database named `hospital_db`.
-   - Execute the provided SQL script (found in `/database/schema.sql`) to generate tables.
+   - Execute the provided SQL script (found in `hospital.sql`) to generate tables.
    - Update the connection string in `App.config` or your Database Helper class:
      ```csharp
      string connString = "Server=localhost;Database=hospital_db;Uid=root;Pwd=yourpassword;";
