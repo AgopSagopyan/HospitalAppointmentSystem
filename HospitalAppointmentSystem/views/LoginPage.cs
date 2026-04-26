@@ -18,6 +18,9 @@ namespace OnlyWorks.views
         private MainRepository _repo;
         private MainController _controller;
 
+        string selectedValue = "";
+
+
         public LoginPage()
         {
             InitializeComponent();
@@ -29,7 +32,24 @@ namespace OnlyWorks.views
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            _controller.PatientLogin(txt_email.Text, txt_password.Text);
+
+            switch (selectedValue)
+            {
+                case "patient_login":
+                    _controller.PatientLogin(txt_email.Text, txt_password.Text);
+                    break;
+
+                
+                case "doctor_login":
+                    _controller.PatientLogin(txt_email.Text, txt_password.Text);
+                    break;
+
+
+                case "admin_login":
+                    _controller.AdminLogin(txt_email.Text, txt_password.Text);
+                    break;
+            }
+
         }
 
         private void link_goToSignup_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -40,6 +60,19 @@ namespace OnlyWorks.views
         private void link_goToForgotPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             NavigationService.NavigateTo(new ForgotPassword());
+        }
+
+
+        private void radioButton1_CheckedChanged_1(object sender, EventArgs e)
+        {
+            RadioButton rb = sender as RadioButton;
+
+            if(rb != null && rb.Checked)
+            {
+                selectedValue = rb.Tag.ToString();
+
+                MessageBox.Show("Variable is now: " + selectedValue);
+            }
         }
     }
 }

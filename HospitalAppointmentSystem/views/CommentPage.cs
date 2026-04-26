@@ -17,6 +17,8 @@ namespace HospitalAppointmentSystem.views
     {
         private MainRepository _mainRepository;
 
+        private int doctorId;
+
         public CommentPage()
         {
             InitializeComponent();
@@ -41,8 +43,8 @@ namespace HospitalAppointmentSystem.views
 
                 pictureBox1.Image = Image.FromFile(row.Cells["DoctorImagePath"].Value.ToString());
 
-
-
+                
+                doctorId = int.Parse( row.Cells["Id"].Value.ToString());
 
 
             }
@@ -50,7 +52,7 @@ namespace HospitalAppointmentSystem.views
 
         private void button1_Click(object sender, EventArgs e)
         {
-            _mainRepository.SendComment("me", "davutdoctor", richTextBox1.Text);
+            _mainRepository.SendComment("me", "davutdoctor", doctorId, richTextBox1.Text);
         }
     }
 }

@@ -25,6 +25,8 @@ namespace HospitalAppointmentSystem.views.flowLayoutPanel
         private void Comment_Load(object sender, EventArgs e)
         {
             richTextBox1.Text = _comment.Content;
+
+            label1.Text = _comment.Sender;
         }
     }
 }

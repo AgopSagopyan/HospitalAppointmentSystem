@@ -5,6 +5,9 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using HospitalAppointmentSystem.views;
+using HospitalAppointmentSystem.views.admin;
+using OnlyWorks.services;
 using OnlyWorks.views.admin;
 
 namespace OnlyWorks.views
@@ -35,6 +38,23 @@ namespace OnlyWorks.views
         {
             panel2.Controls.Clear();
             panel2.Controls.Add(new AdminDoctors());
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            panel2.Controls.Clear();
+            panel2.Controls.Add(new AdminComments());
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            NavigationService.NavigateTo(new CommentPage());
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            panel2.Controls.Clear();
+            panel2.Controls.Add(new AdminMedicines());
         }
     }
 }

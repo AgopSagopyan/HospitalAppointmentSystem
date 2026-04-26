@@ -110,6 +110,36 @@ namespace OnlyWorks.repositories
             return doctors;
         }
 
+
+        public List<Medicine> GetAllMedicines()
+        {
+            List<Medicine> medicines = new List<Medicine>();
+
+            using (MySqlConnection conn = new MySqlConnection(_connectionstring))
+            {
+                conn.Open();
+
+                string query = "SELECT * FROM medicines";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Medicine medicine = new Medicine()
+                        {
+                            Id = reader.GetInt32("id"),
+                            Name = reader.GetString("name"),
+                        };
+                        medicines.Add(medicine);
+                    }
+                }
+
+            }
+            return medicines;
+        }
+
         public List<Doctor> GetDoctorsByProfession(string profession)
         {
             List<Doctor> doctors = new List<Doctor>();
@@ -201,6 +231,42 @@ namespace OnlyWorks.repositories
             return comments;
         }
 
+
+
+        public List<Comment> GetCommentsByDoctorId(int doctor_id)
+        {
+            List<Comment> comments = new List<Comment>();
+
+            using (MySqlConnection conn = new MySqlConnection(_connectionstring))
+            {
+                conn.Open();
+
+                string query = "SELECT * FROM comments WHERE doctor_id=@doctor_id";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                cmd.Parameters.AddWithValue("@doctor_id", doctor_id);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Comment comment = new Comment
+                        {
+                            Id = reader.GetInt32("id"),
+                            Sender = reader.GetString("sender"),
+                            SubjectDoctor = reader.GetString("subject_doctor"),
+                            DoctorId = reader.GetInt32("doctor_id"),
+                            Content = reader.GetString("content"),
+                        };
+
+                        comments.Add(comment);
+                    }
+                }
+            }
+            return comments;
+        }
+
         public Patient PatientLogin(string email, string password)
         {
             using (MySqlConnection conn = new MySqlConnection(_connectionstring))
@@ -222,6 +288,38 @@ namespace OnlyWorks.repositories
                             {
                                 Id = reader.GetInt32("id"),
                                 Email = reader.GetString("email"),
+                                Password = reader.GetString("password")
+                                
+                            };
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
+
+        public Admin AdminLogin(string username, string password)
+        {
+            using (MySqlConnection conn = new MySqlConnection(_connectionstring))
+            {
+                conn.Open();
+
+                string query = "SELECT * FROM admins WHERE username=@username AND password=@password";
+
+                using (MySqlCommand cmd = new MySqlCommand(@query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@password", password);
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new Admin
+                            {
+                                Id = reader.GetInt32("id"),
+                                Username = reader.GetString("username"),
                                 Password = reader.GetString("password")
                                 
                             };
@@ -344,18 +442,21 @@ namespace OnlyWorks.repositories
             }
         }
 
-        public void SendComment(string sender, string subject_doctor, string content)
+
+
+        public void SendComment(string sender, string subject_doctor, int doctor_id, string content)
         {
             using(MySqlConnection conn = new MySqlConnection(_connectionstring))
             {
                 conn.Open();
 
-                string query = "INSERT INTO comments (sender, subject_doctor, content) VALUES (@sender, @subject_doctor, @content)";
+                string query = "INSERT INTO comments (sender, subject_doctor, doctor_id, content) VALUES (@sender, @subject_doctor, @doctor_id, @content)";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@sender", sender);
                     cmd.Parameters.AddWithValue("@subject_doctor", subject_doctor);
+                    cmd.Parameters.AddWithValue("@doctor_id", subject_doctor);
                     cmd.Parameters.AddWithValue("@content", content);
 
                     int rowsAffected = cmd.ExecuteNonQuery();
@@ -433,6 +534,71 @@ namespace OnlyWorks.repositories
                 }
             }
         }
+
+        public void AddMedicine(string medicine_name)
+        {
+            using(MySqlConnection conn = new MySqlConnection(_connectionstring))
+            {
+                conn.Open();
+                
+                string query = "INSERT INTO medicines (name) VALUES (@medicine_name)";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@medicine_name", medicine_name);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0) {
+                        MessageBox.Show("Write Successful");
+                    }
+                }
+            }
+        }
+
+
+        public void UpdateDoctor(int id,string name, string profession, string doctor_image_path)
+        {
+            using(MySqlConnection conn = new MySqlConnection(_connectionstring))
+            {
+                conn.Open();
+                
+                string query = "UPDATE doctors SET doctor_name=@doctor_name, profession=@profession, doctor_image_path=@doctor_image_path WHERE id=@id";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@doctor_name", name);
+                    cmd.Parameters.AddWithValue("@profession", profession);
+                    cmd.Parameters.AddWithValue("@doctor_image_path", doctor_image_path);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0) {
+                        MessageBox.Show("Update Succesful");
+                    }
+                }
+            }
+        }
+
+
+        public void DeleteDoctor(int id)
+        {
+            using(MySqlConnection conn = new MySqlConnection(_connectionstring))
+            {
+                conn.Open();
+                
+                string query = "DELETE FROM doctors WHERE id=@id";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0) {
+                        MessageBox.Show("Deletion Successful");
+                    }
+                }
+            }
+        }
     }
 
     public class Appointment
@@ -453,6 +619,15 @@ namespace OnlyWorks.repositories
         public string Name { get; set; }
 
         public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    public class Admin
+    {
+        public int Id { get; set; }
+
+        public string Username {get; set;}
+
         public string Password { get; set; }
     }
 
@@ -477,7 +652,15 @@ namespace OnlyWorks.repositories
         public int Id { get; set; }
         public string Sender {  get; set; }
         public string SubjectDoctor { get; set; }
+        public int DoctorId { get; set; }
+
         public string Content { get; set; }
+    }
+
+    public class Medicine
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 
 }

@@ -1,3 +1,5 @@
+# Hospital Appointment & Prescription System
+
 A comprehensive Windows Forms (WinForms) desktop application developed in C# that streamlines hospital operations, including patient appointments, doctor consultations, and automated medication reminders. This system utilizes a MySQL database for robust data management and implements full CRUD (Create, Read, Update, Delete) functionality.
 
 ## 🚀 Key Features
@@ -32,6 +34,7 @@ A comprehensive Windows Forms (WinForms) desktop application developed in C# tha
 
 ## 📋 Database Schema Overview
 The system relies on a relational database consisting of the following core tables:
+- `users`: Stores credentials and roles (Admin, Doctor, Patient).
 - `doctors`: Profiles, departments, and schedules.
 - `patients`: Personal details and medical history.
 - `appointments`: Mapping between patients, doctors, and time slots.
@@ -47,7 +50,7 @@ The system relies on a relational database consisting of the following core tabl
 
 2. **Database Configuration:**
    - Create a database named `hospital_db`.
-   - Execute the provided SQL script (found in `hospital.sql`) to generate tables.
+   - Execute the provided SQL script (found in `/database/schema.sql`) to generate tables.
    - Update the connection string in `App.config` or your Database Helper class:
      ```csharp
      string connString = "Server=localhost;Database=hospital_db;Uid=root;Pwd=yourpassword;";

@@ -23,6 +23,23 @@ namespace OnlyWorks.controllers
         {
             Patient patient = _repo.PatientLogin(username, password);
 
+            if (patient != null) {
+
+                NavigationService.NavigateTo(new MainPage());
+
+            } else
+            {
+                MessageBox.Show("Login Failed");
+            }
+
+
+        }
+
+
+        public void DoctorLogin(string username, string password)
+        {
+            Patient patient = _repo.PatientLogin(username, password);
+
             if (username == "admin" && password == "admin")
             {
                 NavigationService.NavigateTo(new AdminPage());
@@ -35,6 +52,24 @@ namespace OnlyWorks.controllers
             {
                 MessageBox.Show("Kullanıcı Bulunamadi");
             }
+
+
+        }
+
+
+        public void AdminLogin(string username, string password)
+        {
+            Admin admin = _repo.AdminLogin(username, password);
+
+            if(admin != null)
+            {
+                NavigationService.NavigateTo(new AdminPage());
+            }
+            else
+            {
+                MessageBox.Show("Kullanıcı Bulunamadi");
+            }
+
 
 
         }
