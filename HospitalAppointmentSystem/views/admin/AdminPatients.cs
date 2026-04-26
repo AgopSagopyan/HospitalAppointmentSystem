@@ -17,6 +17,8 @@ namespace OnlyWorks.views.admin
         private AdminPatientsController _controller;
         private MainRepository _repo;
 
+        private int patientId;
+
         public AdminPatients()
         {
             InitializeComponent();
@@ -28,7 +30,7 @@ namespace OnlyWorks.views.admin
 
         private void AdminPatients_Load(object sender, EventArgs e)
         {
-
+            dataGridView1.DataSource = _repo.GetAllPatients();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -38,8 +40,39 @@ namespace OnlyWorks.views.admin
                 _controller.AddPatient(textBox1.Text, textBox2.Text);
 
             }
-            
 
+
+            dataGridView1.DataSource = _repo.GetAllPatients();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
+
+
+                patientId = Convert.ToInt16(row.Cells["Id"].Value.ToString());
+
+                textBox1.Text = row.Cells["Name"].Value.ToString();
+                textBox2.Text = row.Cells["Email"].Value.ToString();
+                textBox3.Text = row.Cells["Password"].Value.ToString();
+
+
+            }
+
+        }
+
+        private void btn_deletePatient_Click(object sender, EventArgs e)
+        {
+            _repo.DeletePatient(patientId);
+            dataGridView1.DataSource = _repo.GetAllPatients();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            _repo.UpdatePatient(patientId, textBox1.Text, textBox2.Text, textBox3.Text);
             dataGridView1.DataSource = _repo.GetAllPatients();
         }
     }

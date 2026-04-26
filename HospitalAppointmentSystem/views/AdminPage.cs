@@ -21,6 +21,8 @@ namespace OnlyWorks.views
 
         private void button3_Click(object sender, EventArgs e)
         {
+            panel2.Controls.Clear();
+            panel2.Controls.Add(new AdminAppointments());
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -48,7 +50,7 @@ namespace OnlyWorks.views
 
         private void button5_Click(object sender, EventArgs e)
         {
-            NavigationService.NavigateTo(new CommentPage());
+            NavigationService.NavigateTo(new AppointmentPage());
         }
 
         private void button6_Click(object sender, EventArgs e)

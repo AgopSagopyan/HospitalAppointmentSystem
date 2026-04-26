@@ -29,6 +29,11 @@ namespace HospitalAppointmentSystem.views.admin
         {
             dataGridView1.DataSource = _repo.GetAllDoctors();
 
+            comboBox1.DisplayMember = "Name";
+            comboBox1.ValueMember = "Id";
+
+            comboBox1.DataSource = _repo.GetAllDoctors();
+
             //flowLayoutPanel1.Controls.Add();
         }
 
@@ -42,9 +47,10 @@ namespace HospitalAppointmentSystem.views.admin
 
                 List<Comment> commentList = _repo.GetCommentsByDoctorId(doctorId);
 
+                flowLayoutPanel1.Controls.Clear();
+
                 foreach (Comment comment in commentList)
                 {
-                    flowLayoutPanel1.Controls.Clear();
                     flowLayoutPanel1.Controls.Add(new CommentPreset(comment));
                 }
             }
@@ -55,6 +61,21 @@ namespace HospitalAppointmentSystem.views.admin
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btn_sendComment_Click(object sender, EventArgs e)
+        {
+
+                _repo.SendComment("admin", comboBox1.Text, Convert.ToInt32(comboBox1.SelectedValue), richTextBox1.Text);
+
+                List<Comment> commentList = _repo.GetCommentsByDoctorId(Convert.ToInt32(comboBox1.SelectedValue));
+
+
+                flowLayoutPanel1.Controls.Clear();
+                foreach (Comment comment in commentList)
+                {
+                    flowLayoutPanel1.Controls.Add(new CommentPreset(comment));
+                }
         }
     }
 }

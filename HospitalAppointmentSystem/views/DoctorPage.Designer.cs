@@ -1,6 +1,6 @@
-﻿namespace HospitalAppointmentSystem.views.admin
+﻿namespace HospitalAppointmentSystem.views
 {
-    partial class AdminMedicines
+    partial class DoctorPage
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,48 +29,38 @@
         private void InitializeComponent()
         {
             dataGridView1 = new DataGridView();
-            textBox1 = new TextBox();
-            btn_medicineAdd = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(306, 364);
+            dataGridView1.Location = new Point(88, 355);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(485, 290);
+            dataGridView1.Size = new Size(583, 270);
             dataGridView1.TabIndex = 0;
             // 
-            // textBox1
+            // label1
             // 
-            textBox1.Location = new Point(436, 155);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(202, 23);
-            textBox1.TabIndex = 1;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(231, 293);
+            label1.Name = "label1";
+            label1.Size = new Size(276, 45);
+            label1.TabIndex = 1;
+            label1.Text = "My Appointments";
             // 
-            // btn_medicineAdd
-            // 
-            btn_medicineAdd.ImageAlign = ContentAlignment.MiddleRight;
-            btn_medicineAdd.Location = new Point(463, 219);
-            btn_medicineAdd.Name = "btn_medicineAdd";
-            btn_medicineAdd.Size = new Size(146, 61);
-            btn_medicineAdd.TabIndex = 2;
-            btn_medicineAdd.Text = "Add Medicine";
-            btn_medicineAdd.UseVisualStyleBackColor = true;
-            btn_medicineAdd.Click += btn_medicineAdd_Click;
-            // 
-            // AdminMedicines
+            // DoctorPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(30, 30, 30);
-            Controls.Add(btn_medicineAdd);
-            Controls.Add(textBox1);
+            Controls.Add(label1);
             Controls.Add(dataGridView1);
-            Name = "AdminMedicines";
-            Size = new Size(1080, 720);
-            Load += AdminMedicines_Load;
+            Name = "DoctorPage";
+            Size = new Size(1280, 720);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -79,7 +69,6 @@
         #endregion
 
         private DataGridView dataGridView1;
-        private TextBox textBox1;
-        private Button btn_medicineAdd;
+        private Label label1;
     }
 }

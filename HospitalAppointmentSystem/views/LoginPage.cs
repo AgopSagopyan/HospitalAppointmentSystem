@@ -32,14 +32,16 @@ namespace OnlyWorks.views
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-
             switch (selectedValue)
             {
                 case "patient_login":
-                    _controller.PatientLogin(txt_email.Text, txt_password.Text);
+                    if(txt_email.Text.Contains("@"))
+                    {
+                        _controller.PatientLogin(txt_email.Text, txt_password.Text);
+                    } else {
+                        MessageBox.Show("Please enter a valid email address.");
+                    }
                     break;
-
-                
                 case "doctor_login":
                     _controller.PatientLogin(txt_email.Text, txt_password.Text);
                     break;
@@ -49,7 +51,6 @@ namespace OnlyWorks.views
                     _controller.AdminLogin(txt_email.Text, txt_password.Text);
                     break;
             }
-
         }
 
         private void link_goToSignup_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -71,7 +72,7 @@ namespace OnlyWorks.views
             {
                 selectedValue = rb.Tag.ToString();
 
-                MessageBox.Show("Variable is now: " + selectedValue);
+                //MessageBox.Show("Variable is now: " + selectedValue);
             }
         }
     }

@@ -1,6 +1,6 @@
 ﻿namespace HospitalAppointmentSystem.views.admin
 {
-    partial class AdminMedicines
+    partial class AdminAppointments
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,57 +29,32 @@
         private void InitializeComponent()
         {
             dataGridView1 = new DataGridView();
-            textBox1 = new TextBox();
-            btn_medicineAdd = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(306, 364);
+            dataGridView1.Location = new Point(69, 369);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(485, 290);
+            dataGridView1.Size = new Size(779, 290);
             dataGridView1.TabIndex = 0;
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(436, 155);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(202, 23);
-            textBox1.TabIndex = 1;
-            // 
-            // btn_medicineAdd
-            // 
-            btn_medicineAdd.ImageAlign = ContentAlignment.MiddleRight;
-            btn_medicineAdd.Location = new Point(463, 219);
-            btn_medicineAdd.Name = "btn_medicineAdd";
-            btn_medicineAdd.Size = new Size(146, 61);
-            btn_medicineAdd.TabIndex = 2;
-            btn_medicineAdd.Text = "Add Medicine";
-            btn_medicineAdd.UseVisualStyleBackColor = true;
-            btn_medicineAdd.Click += btn_medicineAdd_Click;
-            // 
-            // AdminMedicines
+            // AdminAppointments
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(30, 30, 30);
-            Controls.Add(btn_medicineAdd);
-            Controls.Add(textBox1);
             Controls.Add(dataGridView1);
-            Name = "AdminMedicines";
+            Name = "AdminAppointments";
             Size = new Size(1080, 720);
-            Load += AdminMedicines_Load;
+            Load += AdminAppointments_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private DataGridView dataGridView1;
-        private TextBox textBox1;
-        private Button btn_medicineAdd;
     }
 }

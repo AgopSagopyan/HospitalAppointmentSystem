@@ -49,6 +49,71 @@ namespace OnlyWorks.repositories
             return appointments;
         }
 
+        public List<Appointment> GetAppointmentsByDoctorId(int id)
+        {
+            List<Appointment> appointments = new List<Appointment>();
+
+            using (MySqlConnection conn = new MySqlConnection(_connectionstring))
+            {
+                conn.Open();
+
+                string query = "SELECT * FROM appointments WHERE doctor_id=@id";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                cmd.Parameters.AddWithValue("@id", id);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Appointment appointment = new Appointment()
+                        {
+                            Id = reader.GetInt32("id"),
+                            Clinic  = reader.GetString("clinic"),
+                            DoctorName = reader.GetString("doctor_name"),
+                            Date = reader.GetDateTime("date"),
+                            StartTime = reader.GetTimeSpan("start_time"),
+                            EndTime = reader.GetTimeSpan("end_time"),
+
+                        };
+                        appointments.Add(appointment);
+                    }
+                }
+            }
+            return appointments;
+        }
+
+        public List<Medicine> GetAllMedicines()
+        {
+            List<Medicine> medicines = new List<Medicine>();
+
+            using (MySqlConnection conn = new MySqlConnection(_connectionstring))
+            {
+                conn.Open();
+
+                string query = "SELECT * FROM medicines";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Medicine medicine = new Medicine()
+                        {
+                            Id = reader.GetInt32("id"),
+                            Name = reader.GetString("name"),
+
+                        };
+                        medicines.Add(medicine);
+                    }
+                }
+            }
+            return medicines;
+        }
+
+
         public List<Patient> GetAllPatients()
         {
             List<Patient> patients = new List<Patient>();
@@ -110,35 +175,6 @@ namespace OnlyWorks.repositories
             return doctors;
         }
 
-
-        public List<Medicine> GetAllMedicines()
-        {
-            List<Medicine> medicines = new List<Medicine>();
-
-            using (MySqlConnection conn = new MySqlConnection(_connectionstring))
-            {
-                conn.Open();
-
-                string query = "SELECT * FROM medicines";
-
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-
-                using (MySqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        Medicine medicine = new Medicine()
-                        {
-                            Id = reader.GetInt32("id"),
-                            Name = reader.GetString("name"),
-                        };
-                        medicines.Add(medicine);
-                    }
-                }
-
-            }
-            return medicines;
-        }
 
         public List<Doctor> GetDoctorsByProfession(string profession)
         {
@@ -456,7 +492,7 @@ namespace OnlyWorks.repositories
                 {
                     cmd.Parameters.AddWithValue("@sender", sender);
                     cmd.Parameters.AddWithValue("@subject_doctor", subject_doctor);
-                    cmd.Parameters.AddWithValue("@doctor_id", subject_doctor);
+                    cmd.Parameters.AddWithValue("@doctor_id", doctor_id);
                     cmd.Parameters.AddWithValue("@content", content);
 
                     int rowsAffected = cmd.ExecuteNonQuery();
@@ -471,7 +507,7 @@ namespace OnlyWorks.repositories
 
 
 
-        public void AddAppointment(string clinic, string doctorName, DateTime date, TimeSpan start_time, TimeSpan end_time) {
+        public void AddAppointment(string clinic, string doctorName, int doctor_id, DateTime date, TimeSpan start_time, TimeSpan end_time) {
             using (MySqlConnection conn = new MySqlConnection(_connectionstring)) {
                 conn.Open();
 
@@ -492,12 +528,13 @@ namespace OnlyWorks.repositories
 
                 }
 
-                string query = "INSERT INTO appointments (clinic, doctor_name, date, start_time, end_time) VALUES (@clinic, @doctor_name, @date, @start_time, @end_time)";
+                string query = "INSERT INTO appointments (clinic, doctor_name, doctor_id, date, start_time, end_time) VALUES (@clinic, @doctor_name, doctor_id, @date, @start_time, @end_time)";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@clinic", clinic);
                     cmd.Parameters.AddWithValue("@doctor_name", doctorName);
+                    cmd.Parameters.AddWithValue("@doctor_id", doctor_id);
                     cmd.Parameters.AddWithValue("@date", date.Date);
                     cmd.Parameters.AddWithValue("@start_time", start_time);
                     cmd.Parameters.AddWithValue("@end_time", end_time);
@@ -578,6 +615,29 @@ namespace OnlyWorks.repositories
                 }
             }
         }
+        public void UpdatePatient(int id,string name, string email, string password)
+        {
+            using(MySqlConnection conn = new MySqlConnection(_connectionstring))
+            {
+                conn.Open();
+                
+                string query = "UPDATE patients SET name=@name, email=@email, password=@password WHERE id=@id";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@name", name);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@password", password);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0) {
+                        MessageBox.Show("Update Succesful");
+                    }
+                }
+            }
+        }
+
 
 
         public void DeleteDoctor(int id)
@@ -599,6 +659,26 @@ namespace OnlyWorks.repositories
                 }
             }
         }
+
+        public void DeletePatient(int id)
+        {
+            using(MySqlConnection conn = new MySqlConnection(_connectionstring))
+            {
+                conn.Open();
+                
+                string query = "DELETE FROM patients WHERE id=@id";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0) {
+                        MessageBox.Show("Deletion Successful");
+                    }
+                }
+            }
+        }
     }
 
     public class Appointment
@@ -607,6 +687,7 @@ namespace OnlyWorks.repositories
 
         public string Clinic { get; set; }
         public string DoctorName { get; set; }
+        public string DoctorId { get; set; }
         public DateTime Date { get; set; }
 
         public TimeSpan StartTime { get; set; }

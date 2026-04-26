@@ -21,7 +21,7 @@ namespace OnlyWorks
 
             NavigationService.MainPanel = panel1;
 
-            NavigationService.NavigateTo(new LoginPage());
+            NavigationService.NavigateTo(new AdminPage());
 
 
 

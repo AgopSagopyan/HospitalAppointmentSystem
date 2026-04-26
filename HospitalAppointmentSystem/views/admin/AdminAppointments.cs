@@ -11,27 +11,20 @@ using OnlyWorks.repositories;
 
 namespace HospitalAppointmentSystem.views.admin
 {
-    public partial class AdminMedicines : UserControl
+    public partial class AdminAppointments : UserControl
     {
-
         private readonly MainRepository _repo;
 
-        public AdminMedicines()
+        public AdminAppointments()
         {
             InitializeComponent();
 
             _repo = new MainRepository();
         }
 
-        private void btn_medicineAdd_Click(object sender, EventArgs e)
+        private void AdminAppointments_Load(object sender, EventArgs e)
         {
-            _repo.AddMedicine(textBox1.Text);
-            dataGridView1.DataSource = _repo.GetAllMedicines();
-        }
-
-        private void AdminMedicines_Load(object sender, EventArgs e)
-        {
-            dataGridView1.DataSource = _repo.GetAllMedicines();
+            dataGridView1.DataSource = _repo.GetAllAppointments();
         }
     }
 }

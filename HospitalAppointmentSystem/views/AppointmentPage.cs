@@ -38,7 +38,7 @@ namespace OnlyWorks.views
 
             TimeSpan end = start.Add(TimeSpan.FromMinutes(10));
 
-            _repo.AddAppointment(combo_clinic.Text, combo_doctorName.Text, dateTimePicker1.Value, start, end);
+            _repo.AddAppointment(combo_clinic.Text, combo_doctorName.Text, Convert.ToInt16(combo_doctorName.SelectedValue), dateTimePicker1.Value, start, end);
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -51,14 +51,19 @@ namespace OnlyWorks.views
             combo_clinic.DataSource = _repo.GetAllProfessions();
             combo_clinic.DisplayMember = "ProfessionName";
             combo_clinic.ValueMember = "ProfessionName";
+
+
         }
 
         private void combo_clinic_SelectedIndexChanged(object sender, EventArgs e)
         {
             combo_doctorName.Text = "";
-            combo_doctorName.DataSource = _repo.GetDoctorsByProfession(combo_clinic.Text);
+
+
             combo_doctorName.DisplayMember = "Name";
-            combo_doctorName.ValueMember= "Name";
+            combo_doctorName.ValueMember = "Id";
+            combo_doctorName.DataSource = _repo.GetDoctorsByProfession(combo_clinic.Text);
+
 
         }
     }
