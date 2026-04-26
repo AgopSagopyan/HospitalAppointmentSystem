@@ -32,6 +32,9 @@
             txt_password = new TextBox();
             btn_login = new Button();
             panel1 = new Panel();
+            radioButton3 = new RadioButton();
+            radioButton2 = new RadioButton();
+            radioButton1 = new RadioButton();
             link_goToForgotPassword = new LinkLabel();
             link_goToSignup = new LinkLabel();
             label3 = new Label();
@@ -44,14 +47,14 @@
             // 
             // txt_email
             // 
-            txt_email.Location = new Point(213, 233);
+            txt_email.Location = new Point(212, 178);
             txt_email.Name = "txt_email";
             txt_email.Size = new Size(201, 23);
             txt_email.TabIndex = 0;
             // 
             // txt_password
             // 
-            txt_password.Location = new Point(212, 316);
+            txt_password.Location = new Point(211, 261);
             txt_password.Name = "txt_password";
             txt_password.Size = new Size(201, 23);
             txt_password.TabIndex = 1;
@@ -61,7 +64,7 @@
             btn_login.BackColor = SystemColors.Highlight;
             btn_login.FlatStyle = FlatStyle.Popup;
             btn_login.ForeColor = Color.White;
-            btn_login.Location = new Point(212, 392);
+            btn_login.Location = new Point(211, 476);
             btn_login.Name = "btn_login";
             btn_login.Size = new Size(200, 47);
             btn_login.TabIndex = 2;
@@ -72,6 +75,9 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(45, 45, 45);
+            panel1.Controls.Add(radioButton3);
+            panel1.Controls.Add(radioButton2);
+            panel1.Controls.Add(radioButton1);
             panel1.Controls.Add(link_goToForgotPassword);
             panel1.Controls.Add(link_goToSignup);
             panel1.Controls.Add(label3);
@@ -85,11 +91,53 @@
             panel1.Size = new Size(640, 720);
             panel1.TabIndex = 3;
             // 
+            // radioButton3
+            // 
+            radioButton3.AutoSize = true;
+            radioButton3.ForeColor = Color.White;
+            radioButton3.Location = new Point(263, 381);
+            radioButton3.Name = "radioButton3";
+            radioButton3.Size = new Size(94, 19);
+            radioButton3.TabIndex = 10;
+            radioButton3.TabStop = true;
+            radioButton3.Tag = "admin_login";
+            radioButton3.Text = "Admin Login";
+            radioButton3.UseVisualStyleBackColor = true;
+            radioButton3.CheckedChanged += radioButton1_CheckedChanged_1;
+            // 
+            // radioButton2
+            // 
+            radioButton2.AutoSize = true;
+            radioButton2.ForeColor = Color.White;
+            radioButton2.Location = new Point(263, 356);
+            radioButton2.Name = "radioButton2";
+            radioButton2.Size = new Size(94, 19);
+            radioButton2.TabIndex = 9;
+            radioButton2.TabStop = true;
+            radioButton2.Tag = "doctor_login";
+            radioButton2.Text = "Doctor Login";
+            radioButton2.UseVisualStyleBackColor = true;
+            radioButton2.CheckedChanged += radioButton1_CheckedChanged_1;
+            // 
+            // radioButton1
+            // 
+            radioButton1.AutoSize = true;
+            radioButton1.ForeColor = Color.White;
+            radioButton1.Location = new Point(263, 331);
+            radioButton1.Name = "radioButton1";
+            radioButton1.Size = new Size(95, 19);
+            radioButton1.TabIndex = 8;
+            radioButton1.TabStop = true;
+            radioButton1.Tag = "patient_login";
+            radioButton1.Text = "Patient Login";
+            radioButton1.UseVisualStyleBackColor = true;
+            radioButton1.CheckedChanged += radioButton1_CheckedChanged_1;
+            // 
             // link_goToForgotPassword
             // 
             link_goToForgotPassword.AutoSize = true;
             link_goToForgotPassword.LinkColor = SystemColors.Highlight;
-            link_goToForgotPassword.Location = new Point(234, 507);
+            link_goToForgotPassword.Location = new Point(233, 591);
             link_goToForgotPassword.Name = "link_goToForgotPassword";
             link_goToForgotPassword.Size = new Size(144, 15);
             link_goToForgotPassword.TabIndex = 7;
@@ -101,7 +149,7 @@
             // 
             link_goToSignup.AutoSize = true;
             link_goToSignup.LinkColor = SystemColors.Highlight;
-            link_goToSignup.Location = new Point(234, 469);
+            link_goToSignup.Location = new Point(233, 553);
             link_goToSignup.Name = "link_goToSignup";
             link_goToSignup.Size = new Size(152, 15);
             link_goToSignup.TabIndex = 6;
@@ -113,7 +161,7 @@
             // 
             label3.AutoSize = true;
             label3.ForeColor = Color.White;
-            label3.Location = new Point(212, 298);
+            label3.Location = new Point(211, 243);
             label3.Name = "label3";
             label3.Size = new Size(57, 15);
             label3.TabIndex = 5;
@@ -123,7 +171,7 @@
             // 
             label2.AutoSize = true;
             label2.ForeColor = Color.White;
-            label2.Location = new Point(212, 215);
+            label2.Location = new Point(211, 160);
             label2.Name = "label2";
             label2.Size = new Size(36, 15);
             label2.TabIndex = 4;
@@ -134,7 +182,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(264, 151);
+            label1.Location = new Point(263, 96);
             label1.Name = "label1";
             label1.Size = new Size(104, 45);
             label1.TabIndex = 3;
@@ -177,5 +225,8 @@
         private LinkLabel link_goToSignup;
         private LinkLabel link_goToForgotPassword;
         private PictureBox pictureBox1;
+        private RadioButton radioButton3;
+        private RadioButton radioButton2;
+        private RadioButton radioButton1;
     }
 }

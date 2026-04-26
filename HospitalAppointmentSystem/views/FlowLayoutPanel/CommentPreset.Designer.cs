@@ -59,14 +59,15 @@
             label1.TabIndex = 2;
             label1.Text = "Sender";
             // 
-            // Comment
+            // CommentPreset
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             Controls.Add(label1);
             Controls.Add(pictureBox1);
             Controls.Add(richTextBox1);
-            Name = "Comment";
+            Name = "CommentPreset";
             Size = new Size(646, 325);
             Load += Comment_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

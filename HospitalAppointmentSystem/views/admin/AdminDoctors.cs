@@ -21,6 +21,8 @@ namespace OnlyWorks.views.admin
 
         private string lastUploadedFilePath;
 
+        private int doctorId;
+
 
         // Path.Combine is the industry standard for joining paths
         private string uploadDirectory = Path.Combine(Application.StartupPath, "..\\..\\..\\uploads");
@@ -47,6 +49,7 @@ namespace OnlyWorks.views.admin
         private void btn_addDoctor_Click_1(object sender, EventArgs e)
         {
             _repo.AddDoctor(txt_doctorName.Text, combo_profession.Text, lastUploadedFilePath);
+
             dataGridView1.DataSource = _repo.GetAllDoctors();
         }
 
@@ -73,16 +76,64 @@ namespace OnlyWorks.views.admin
 
                         lastUploadedFilePath = destinationPath;
 
-                        MessageBox.Show("Success");
+                        pictureBox1.Image = Image.FromFile(destinationPath);
 
-                        
 
-                    } catch (Exception ex)
+                    }
+                    catch (Exception ex)
                     {
                         MessageBox.Show("Error: " + ex.Message);
                     }
                 }
             }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
+                if (row.Cells["DoctorImagePath"].Value.ToString() == null)
+                {
+                    pictureBox1.Image = null;
+
+                }
+                else
+                {
+
+                    try
+                    {
+                        pictureBox1.Image = Image.FromFile(row.Cells["DoctorImagePath"].Value.ToString());
+                    } catch
+                    {
+                        MessageBox.Show("Path is Empty");
+                    }
+
+                    doctorId = int.Parse(row.Cells["Id"].Value.ToString());
+
+                    txt_doctorName.Text = row.Cells["Name"].Value.ToString();
+
+                }
+
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            _repo.DeleteDoctor(doctorId);
+            dataGridView1.DataSource = _repo.GetAllDoctors();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            _repo.UpdateDoctor(doctorId, txt_doctorName.Text, combo_profession.Text, lastUploadedFilePath);
+            dataGridView1.DataSource = _repo.GetAllDoctors();
         }
     }
 }

@@ -63,6 +63,17 @@ namespace HospitalAppointmentSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap social_media_chatting_online_default_male_blank_profile_picture_head_and_body_icon_people_standing_icon_grey_background_free_vector {
+            get {
+                object obj = ResourceManager.GetObject("social-media-chatting-online-default-male-blank-profile-picture-head-and-body-ico" +
+                        "n-people-standing-icon-grey-background-free-vector", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Vector_doctor_examining_a_patient_at_the_clinic_portraying_20_qualities_that_make_a_good_doctor_1200x900 {
             get {
                 object obj = ResourceManager.GetObject("Vector-doctor-examining-a-patient-at-the-clinic-portraying-20-qualities-that-make" +

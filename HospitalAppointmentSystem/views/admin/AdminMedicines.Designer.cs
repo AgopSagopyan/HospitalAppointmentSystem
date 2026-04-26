@@ -1,6 +1,6 @@
 ﻿namespace HospitalAppointmentSystem.views.admin
 {
-    partial class AdminComments
+    partial class AdminMedicines
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,58 +28,57 @@
         /// </summary>
         private void InitializeComponent()
         {
-            flowLayoutPanel1 = new FlowLayoutPanel();
             dataGridView1 = new DataGridView();
-            richTextBox1 = new RichTextBox();
+            textBox1 = new TextBox();
+            btn_medicineAdd = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
-            // 
-            // flowLayoutPanel1
-            // 
-            flowLayoutPanel1.AutoScroll = true;
-            flowLayoutPanel1.BackColor = Color.White;
-            flowLayoutPanel1.Location = new Point(18, 493);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(588, 210);
-            flowLayoutPanel1.TabIndex = 5;
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(610, 493);
+            dataGridView1.Location = new Point(306, 364);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(452, 210);
-            dataGridView1.TabIndex = 6;
-            dataGridView1.CellClick += dataGridView1_CellClick;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            dataGridView1.Size = new Size(485, 290);
+            dataGridView1.TabIndex = 0;
             // 
-            // richTextBox1
+            // textBox1
             // 
-            richTextBox1.Location = new Point(126, 62);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(364, 269);
-            richTextBox1.TabIndex = 7;
-            richTextBox1.Text = "";
+            textBox1.Location = new Point(436, 155);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(202, 23);
+            textBox1.TabIndex = 1;
             // 
-            // AdminComments
+            // btn_medicineAdd
+            // 
+            btn_medicineAdd.ImageAlign = ContentAlignment.MiddleRight;
+            btn_medicineAdd.Location = new Point(463, 219);
+            btn_medicineAdd.Name = "btn_medicineAdd";
+            btn_medicineAdd.Size = new Size(146, 61);
+            btn_medicineAdd.TabIndex = 2;
+            btn_medicineAdd.Text = "Add Medicine";
+            btn_medicineAdd.UseVisualStyleBackColor = true;
+            btn_medicineAdd.Click += btn_medicineAdd_Click;
+            // 
+            // AdminMedicines
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(30, 30, 30);
-            Controls.Add(richTextBox1);
+            Controls.Add(btn_medicineAdd);
+            Controls.Add(textBox1);
             Controls.Add(dataGridView1);
-            Controls.Add(flowLayoutPanel1);
-            Name = "AdminComments";
+            Name = "AdminMedicines";
             Size = new Size(1080, 720);
-            Load += AdminComments_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private FlowLayoutPanel flowLayoutPanel1;
         private DataGridView dataGridView1;
-        private RichTextBox richTextBox1;
+        private TextBox textBox1;
+        private Button btn_medicineAdd;
     }
 }
