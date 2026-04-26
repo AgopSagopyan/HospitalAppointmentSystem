@@ -1,7 +1,3 @@
-# HospitalAppointmentSystem
-
-<<<<<<< Updated upstream
-=======
 A comprehensive Windows Forms (WinForms) desktop application developed in C# that streamlines hospital operations, including patient appointments, doctor consultations, and automated medication reminders. This system utilizes a MySQL database for robust data management and implements full CRUD (Create, Read, Update, Delete) functionality.
 
 ## 🚀 Key Features
@@ -74,4 +70,3 @@ Contributions are welcome! Please fork the repository and create a pull request 
 
 ## 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
->>>>>>> Stashed changes
