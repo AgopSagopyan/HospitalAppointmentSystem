@@ -1,13 +1,13 @@
 using System.Collections.Generic;
-using HastaneRandevuSistemi.Views.Pages;
+using HospitalAppointmentSystem.Views.Pages;
 using HospitalAppointmentSystem.views;
 using HospitalAppointmentSystem.views.admin;
 using MySql.Data.MySqlClient;
-using OnlyWorks.services;
-using OnlyWorks.views;
-using OnlyWorks.views.admin;
+using HospitalAppointmentSystem.services;
+using HospitalAppointmentSystem.views;
+using HospitalAppointmentSystem.views.admin;
 
-namespace OnlyWorks
+namespace HospitalAppointmentSystem
 {
 
     public partial class Form1 : Form
@@ -21,7 +21,7 @@ namespace OnlyWorks
 
             NavigationService.MainPanel = panel1;
 
-            NavigationService.NavigateTo(new AdminPage());
+            NavigationService.NavigateTo(new LoginPage());
 
 
 

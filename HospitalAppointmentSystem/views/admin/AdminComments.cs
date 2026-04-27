@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Accessibility;
 using HospitalAppointmentSystem.views.flowLayoutPanel;
-using OnlyWorks.controllers;
-using OnlyWorks.repositories;
+using HospitalAppointmentSystem.controllers;
+using HospitalAppointmentSystem.repositories;
 
 namespace HospitalAppointmentSystem.views.admin
 {

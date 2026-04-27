@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using OnlyWorks.services;
+using HospitalAppointmentSystem.services;
 
-namespace OnlyWorks.views
+namespace HospitalAppointmentSystem.views
 {
     public partial class MainPage : UserControl
     {

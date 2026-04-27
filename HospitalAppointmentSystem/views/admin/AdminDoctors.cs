@@ -9,14 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Google.Protobuf;
-using OnlyWorks.controllers.admin;
-using OnlyWorks.repositories;
+using HospitalAppointmentSystem.controllers;
+using HospitalAppointmentSystem.repositories;
 
-namespace OnlyWorks.views.admin
+namespace HospitalAppointmentSystem.views.admin
 {
     public partial class AdminDoctors : UserControl
     {
-        private AdminDoctorsController _controller;
         private MainRepository _repo;
 
         private string lastUploadedFilePath;
@@ -32,7 +31,6 @@ namespace OnlyWorks.views.admin
         public AdminDoctors()
         {
             InitializeComponent();
-            _controller = new AdminDoctorsController();
 
             _repo = new MainRepository();
         }
@@ -48,7 +46,7 @@ namespace OnlyWorks.views.admin
 
         private void btn_addDoctor_Click_1(object sender, EventArgs e)
         {
-            _repo.AddDoctor(txt_doctorName.Text, combo_profession.Text, lastUploadedFilePath);
+            _repo.AddDoctor(txt_doctorName.Text, txt_doctorEmail.Text, txt_doctorPassword.Text, combo_profession.Text, lastUploadedFilePath);
 
             dataGridView1.DataSource = _repo.GetAllDoctors();
         }
@@ -113,7 +111,8 @@ namespace OnlyWorks.views.admin
                     doctorId = int.Parse(row.Cells["Id"].Value.ToString());
 
                     txt_doctorName.Text = row.Cells["Name"].Value.ToString();
-
+                    txt_doctorEmail.Text = row.Cells["Email"].Value.ToString();
+                    txt_doctorPassword.Text = row.Cells["Password"].Value.ToString();
                 }
 
             }

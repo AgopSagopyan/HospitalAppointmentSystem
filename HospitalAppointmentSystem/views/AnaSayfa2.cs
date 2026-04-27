@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HastaneRandevuSistemi.Views.Pages
+namespace HospitalAppointmentSystem.Views.Pages
 {
     public partial class AnaSayfa2 : UserControl
     {

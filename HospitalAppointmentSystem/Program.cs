@@ -1,4 +1,4 @@
-namespace OnlyWorks
+namespace HospitalAppointmentSystem
 {
     internal static class Program
     {

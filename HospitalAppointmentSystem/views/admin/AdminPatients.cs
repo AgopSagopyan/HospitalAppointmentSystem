@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using OnlyWorks.controllers.admin;
-using OnlyWorks.repositories;
+using HospitalAppointmentSystem.controllers.admin;
+using HospitalAppointmentSystem.repositories;
 
-namespace OnlyWorks.views.admin
+namespace HospitalAppointmentSystem.views.admin
 {
     public partial class AdminPatients : UserControl
     {

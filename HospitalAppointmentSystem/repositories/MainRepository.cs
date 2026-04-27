@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Asn1.Mozilla;
 
-namespace OnlyWorks.repositories
+namespace HospitalAppointmentSystem.repositories
 {
     public class MainRepository
     {
@@ -35,8 +35,9 @@ namespace OnlyWorks.repositories
                         Appointment appointment = new Appointment()
                         {
                             Id = reader.GetInt32("id"),
-                            Clinic  = reader.GetString("clinic"),
+                            Clinic = reader.GetString("clinic"),
                             DoctorName = reader.GetString("doctor_name"),
+                            DoctorId = reader.GetInt32("doctor_id"),
                             Date = reader.GetDateTime("date"),
                             StartTime = reader.GetTimeSpan("start_time"),
                             EndTime = reader.GetTimeSpan("end_time"),
@@ -72,6 +73,7 @@ namespace OnlyWorks.repositories
                             Id = reader.GetInt32("id"),
                             Clinic  = reader.GetString("clinic"),
                             DoctorName = reader.GetString("doctor_name"),
+                            DoctorId = reader.GetInt32("doctor_id"),
                             Date = reader.GetDateTime("date"),
                             StartTime = reader.GetTimeSpan("start_time"),
                             EndTime = reader.GetTimeSpan("end_time"),
@@ -164,6 +166,8 @@ namespace OnlyWorks.repositories
                         {
                             Id = reader.GetInt32("id"),
                             Name = reader.GetString("doctor_name"),
+                            Email = reader.GetString("email"),
+                            Password = reader.GetString("password"),
                             Profession = reader.GetString("profession"),
                             DoctorImagePath = reader.GetString("doctor_image_path")
                         };
@@ -366,6 +370,37 @@ namespace OnlyWorks.repositories
             return null;
         }
 
+        public Doctor DoctorLogin(string email, string password)
+        {
+            using (MySqlConnection conn = new MySqlConnection(_connectionstring))
+            {
+                conn.Open();
+
+                string query = "SELECT * FROM doctors WHERE email=@email AND password=@password";
+
+                using (MySqlCommand cmd = new MySqlCommand(@query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@password", password);
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new Doctor()
+                            {
+                                Id = reader.GetInt32("id"),
+                                Email = reader.GetString("email"),
+                                Password = reader.GetString("password")
+                                
+                            };
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
         public bool PatientChangePassword(string email, string password)
         {
             using (MySqlConnection conn = new MySqlConnection(_connectionstring))
@@ -507,7 +542,7 @@ namespace OnlyWorks.repositories
 
 
 
-        public void AddAppointment(string clinic, string doctorName, int doctor_id, DateTime date, TimeSpan start_time, TimeSpan end_time) {
+        public void AddAppointment(string clinic, string doctorName, int doctor_id, int patient_id, DateTime date, TimeSpan start_time, TimeSpan end_time) {
             using (MySqlConnection conn = new MySqlConnection(_connectionstring)) {
                 conn.Open();
 
@@ -528,7 +563,7 @@ namespace OnlyWorks.repositories
 
                 }
 
-                string query = "INSERT INTO appointments (clinic, doctor_name, doctor_id, date, start_time, end_time) VALUES (@clinic, @doctor_name, doctor_id, @date, @start_time, @end_time)";
+                string query = "INSERT INTO appointments (clinic, doctor_name, doctor_id, date, start_time, end_time) VALUES (@clinic, @doctor_name, @doctor_id, @date, @start_time, @end_time)";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
@@ -550,17 +585,19 @@ namespace OnlyWorks.repositories
         }
 
 
-        public void AddDoctor(string name, string profession, string doctor_image_path)
+        public void AddDoctor(string name, string email, string password, string profession, string doctor_image_path)
         {
             using(MySqlConnection conn = new MySqlConnection(_connectionstring))
             {
                 conn.Open();
                 
-                string query = "INSERT INTO doctors (doctor_name, profession, doctor_image_path) VALUES (@doctor_name, @profession, @doctor_image_path)";
+                string query = "INSERT INTO doctors (doctor_name, email, password, profession, doctor_image_path) VALUES (@doctor_name, @email, @password, @profession, @doctor_image_path)";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@doctor_name", name);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@password", password);
                     cmd.Parameters.AddWithValue("@profession", profession);
                     cmd.Parameters.AddWithValue("@doctor_image_path", doctor_image_path);
 
@@ -687,7 +724,7 @@ namespace OnlyWorks.repositories
 
         public string Clinic { get; set; }
         public string DoctorName { get; set; }
-        public string DoctorId { get; set; }
+        public int DoctorId { get; set; }
         public DateTime Date { get; set; }
 
         public TimeSpan StartTime { get; set; }
@@ -717,6 +754,9 @@ namespace OnlyWorks.repositories
         public int Id { get; set; }
 
         public string Name { get; set; }
+
+        public string Email { get; set; }
+        public string Password { get; set; }    
 
         public string Profession { get; set; }
         public string DoctorImagePath { get; set; }

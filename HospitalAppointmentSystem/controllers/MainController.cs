@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OnlyWorks.repositories;
-using OnlyWorks.services;
-using OnlyWorks.views;
+﻿using HospitalAppointmentSystem.services;
+using HospitalAppointmentSystem.views;
+using HospitalAppointmentSystem.repositories;
 
-namespace OnlyWorks.controllers
+namespace HospitalAppointmentSystem.controllers
 {
 
     public class MainController
@@ -36,21 +31,21 @@ namespace OnlyWorks.controllers
         }
 
 
-        public void DoctorLogin(string username, string password)
+        public void DoctorLogin(string email, string password)
         {
-            Patient patient = _repo.PatientLogin(username, password);
+            Doctor doctor = _repo.DoctorLogin(email, password);
 
-            if (username == "admin" && password == "admin")
+            if (email == "admin" && password == "admin")
             {
-                NavigationService.NavigateTo(new AdminPage());
+                NavigationService.NavigateTo(new DoctorPage(doctor.Id));
             }
-            else if (patient != null)
+            else if (doctor != null)
             {
-                NavigationService.NavigateTo(new MainPage());
+                NavigationService.NavigateTo(new DoctorPage(doctor.Id));
             }
             else
             {
-                MessageBox.Show("Kullanıcı Bulunamadi");
+                MessageBox.Show("Doctor Not Found");
             }
 
 

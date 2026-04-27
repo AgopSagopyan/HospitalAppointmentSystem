@@ -7,10 +7,9 @@ using System.Linq;
 using System.Text;
 using HospitalAppointmentSystem.views;
 using HospitalAppointmentSystem.views.admin;
-using OnlyWorks.services;
-using OnlyWorks.views.admin;
+using HospitalAppointmentSystem.services;
 
-namespace OnlyWorks.views
+namespace HospitalAppointmentSystem.views
 {
     public partial class AdminPage : UserControl
     {

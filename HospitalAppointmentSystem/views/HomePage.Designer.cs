@@ -37,6 +37,7 @@
             BackColor = Color.FromArgb(30, 30, 30);
             Name = "HomePage";
             Size = new Size(1280, 720);
+            Load += HomePage_Load;
             ResumeLayout(false);
         }
 

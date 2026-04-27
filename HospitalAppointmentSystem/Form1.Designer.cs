@@ -1,4 +1,4 @@
-﻿namespace OnlyWorks
+﻿namespace HospitalAppointmentSystem
 {
     partial class Form1
     {

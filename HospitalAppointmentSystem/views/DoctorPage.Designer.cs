@@ -61,6 +61,7 @@
             Controls.Add(dataGridView1);
             Name = "DoctorPage";
             Size = new Size(1280, 720);
+            Load += DoctorPage_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();

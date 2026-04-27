@@ -1,4 +1,4 @@
-﻿namespace OnlyWorks.views
+﻿namespace HospitalAppointmentSystem.views
 {
     partial class LoginPage
     {

@@ -1,4 +1,4 @@
-﻿namespace OnlyWorks.views.admin
+﻿namespace HospitalAppointmentSystem.views.admin
 {
     partial class AdminPatients
     {

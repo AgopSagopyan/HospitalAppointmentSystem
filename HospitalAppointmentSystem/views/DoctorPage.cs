@@ -7,14 +7,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HospitalAppointmentSystem.repositories;
 
 namespace HospitalAppointmentSystem.views
 {
     public partial class DoctorPage : UserControl
     {
-        public DoctorPage()
+        private readonly MainRepository _repo;
+
+        private int _doctorId;
+
+        public DoctorPage(int doctorId)
         {
+            
             InitializeComponent();
+
+            _repo = new MainRepository();
+
+            _doctorId = doctorId;
+        }
+
+        private void DoctorPage_Load(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = _repo.GetAppointmentsByDoctorId(_doctorId);
+
         }
     }
 }

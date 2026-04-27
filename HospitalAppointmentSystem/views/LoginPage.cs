@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using OnlyWorks.controllers;
-using OnlyWorks.repositories;
-using OnlyWorks.services;
+using HospitalAppointmentSystem.controllers;
+using HospitalAppointmentSystem.repositories;
+using HospitalAppointmentSystem.services;
 
-namespace OnlyWorks.views
+namespace HospitalAppointmentSystem.views
 {
     public partial class LoginPage : UserControl
     {
@@ -43,7 +43,7 @@ namespace OnlyWorks.views
                     }
                     break;
                 case "doctor_login":
-                    _controller.PatientLogin(txt_email.Text, txt_password.Text);
+                    _controller.DoctorLogin(txt_email.Text, txt_password.Text);
                     break;
 
 

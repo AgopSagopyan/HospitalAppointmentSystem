@@ -1,4 +1,4 @@
-﻿namespace OnlyWorks.views.admin
+﻿namespace HospitalAppointmentSystem.views.admin
 {
     partial class AdminDoctors
     {
@@ -41,6 +41,10 @@
             pictureBox1 = new PictureBox();
             button1 = new Button();
             button2 = new Button();
+            txt_doctorEmail = new TextBox();
+            txt_doctorPassword = new TextBox();
+            label5 = new Label();
+            label6 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -58,14 +62,14 @@
             // 
             // txt_doctorName
             // 
-            txt_doctorName.Location = new Point(99, 150);
+            txt_doctorName.Location = new Point(97, 65);
             txt_doctorName.Name = "txt_doctorName";
             txt_doctorName.Size = new Size(247, 23);
             txt_doctorName.TabIndex = 1;
             // 
             // btn_addDoctor
             // 
-            btn_addDoctor.Location = new Point(97, 498);
+            btn_addDoctor.Location = new Point(97, 524);
             btn_addDoctor.Name = "btn_addDoctor";
             btn_addDoctor.Size = new Size(247, 53);
             btn_addDoctor.TabIndex = 4;
@@ -76,9 +80,9 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(398, 137);
+            dataGridView1.Location = new Point(388, 104);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(642, 532);
+            dataGridView1.Size = new Size(642, 591);
             dataGridView1.TabIndex = 5;
             dataGridView1.CellClick += dataGridView1_CellClick;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
@@ -87,7 +91,7 @@
             // 
             label2.AutoSize = true;
             label2.ForeColor = Color.White;
-            label2.Location = new Point(99, 130);
+            label2.Location = new Point(97, 47);
             label2.Name = "label2";
             label2.Size = new Size(78, 15);
             label2.TabIndex = 6;
@@ -97,7 +101,7 @@
             // 
             label3.AutoSize = true;
             label3.ForeColor = Color.White;
-            label3.Location = new Point(99, 195);
+            label3.Location = new Point(97, 248);
             label3.Name = "label3";
             label3.Size = new Size(62, 15);
             label3.TabIndex = 7;
@@ -106,7 +110,7 @@
             // combo_profession
             // 
             combo_profession.FormattingEnabled = true;
-            combo_profession.Location = new Point(99, 216);
+            combo_profession.Location = new Point(97, 269);
             combo_profession.Name = "combo_profession";
             combo_profession.Size = new Size(247, 23);
             combo_profession.TabIndex = 8;
@@ -119,7 +123,7 @@
             // 
             label4.AutoSize = true;
             label4.ForeColor = Color.White;
-            label4.Location = new Point(97, 389);
+            label4.Location = new Point(95, 436);
             label4.Name = "label4";
             label4.Size = new Size(40, 15);
             label4.TabIndex = 9;
@@ -127,7 +131,7 @@
             // 
             // btn_imagePicker
             // 
-            btn_imagePicker.Location = new Point(99, 413);
+            btn_imagePicker.Location = new Point(97, 460);
             btn_imagePicker.Name = "btn_imagePicker";
             btn_imagePicker.Size = new Size(127, 28);
             btn_imagePicker.TabIndex = 10;
@@ -138,7 +142,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = HospitalAppointmentSystem.Properties.Resources.social_media_chatting_online_default_male_blank_profile_picture_head_and_body_icon_people_standing_icon_grey_background_free_vector;
-            pictureBox1.Location = new Point(99, 262);
+            pictureBox1.Location = new Point(97, 317);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(136, 106);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -147,7 +151,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(97, 557);
+            button1.Location = new Point(97, 583);
             button1.Name = "button1";
             button1.Size = new Size(247, 53);
             button1.TabIndex = 12;
@@ -160,7 +164,7 @@
             button2.BackColor = Color.Red;
             button2.FlatStyle = FlatStyle.Popup;
             button2.ForeColor = Color.White;
-            button2.Location = new Point(97, 616);
+            button2.Location = new Point(97, 642);
             button2.Name = "button2";
             button2.Size = new Size(247, 53);
             button2.TabIndex = 13;
@@ -168,11 +172,49 @@
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
+            // txt_doctorEmail
+            // 
+            txt_doctorEmail.Location = new Point(97, 128);
+            txt_doctorEmail.Name = "txt_doctorEmail";
+            txt_doctorEmail.Size = new Size(247, 23);
+            txt_doctorEmail.TabIndex = 14;
+            // 
+            // txt_doctorPassword
+            // 
+            txt_doctorPassword.Location = new Point(97, 201);
+            txt_doctorPassword.Name = "txt_doctorPassword";
+            txt_doctorPassword.Size = new Size(247, 23);
+            txt_doctorPassword.TabIndex = 15;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(97, 110);
+            label5.Name = "label5";
+            label5.Size = new Size(75, 15);
+            label5.TabIndex = 16;
+            label5.Text = "Doctor Email";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.ForeColor = Color.White;
+            label6.Location = new Point(97, 183);
+            label6.Name = "label6";
+            label6.Size = new Size(96, 15);
+            label6.TabIndex = 17;
+            label6.Text = "Doctor Password";
+            // 
             // AdminDoctors
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(30, 30, 30);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(txt_doctorPassword);
+            Controls.Add(txt_doctorEmail);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(pictureBox1);
@@ -210,5 +252,9 @@
         private PictureBox pictureBox1;
         private Button button1;
         private Button button2;
+        private TextBox txt_doctorEmail;
+        private TextBox txt_doctorPassword;
+        private Label label5;
+        private Label label6;
     }
 }

@@ -9,8 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using OnlyWorks.repositories;
-using static OnlyWorks.Form1;
+using HospitalAppointmentSystem.repositories;
+using static HospitalAppointmentSystem.Form1;
 
 namespace OnlyWorks
 {

@@ -1,4 +1,4 @@
-﻿namespace HastaneRandevuSistemi.Views.Pages
+﻿namespace HospitalAppointmentSystem.Views.Pages
 {
     partial class AnaSayfa2
     {

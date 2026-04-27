@@ -16,5 +16,10 @@ namespace HospitalAppointmentSystem.views
         {
             InitializeComponent();
         }
+
+        private void HomePage_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
