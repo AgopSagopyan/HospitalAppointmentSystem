@@ -784,5 +784,17 @@ namespace HospitalAppointmentSystem.repositories
         public string Name { get; set; }
     }
 
+    public class Prescription
+    {
+        public int Id { get; set; }
+
+        public DateTime Date { get; set; }
+        public int PatientId { get; set; }
+        public int DoctorId { get; set; }
+        public int MedicineId { get; set; }
+
+        public string DosageInstruction { get; set; }
+    }
+
 }
 
