@@ -1,4 +1,4 @@
-﻿namespace HospitalAppointmentSystem.views.flowLayoutPanel
+﻿namespace HospitalAppointmentSystem.views.prefabs
 {
     partial class CommentPreset
     {

@@ -106,6 +106,7 @@ namespace HospitalAppointmentSystem.repositories
                         {
                             Id = reader.GetInt32("id"),
                             Name = reader.GetString("name"),
+                            ImagePath = reader.GetString("image_path"),
 
                         };
                         medicines.Add(medicine);
@@ -114,6 +115,39 @@ namespace HospitalAppointmentSystem.repositories
             }
             return medicines;
         }
+
+        public List<Prescription> GetAllPrescriptions()
+        {
+            List<Prescription> prescriptions = new List<Prescription>();
+
+            using (MySqlConnection conn = new MySqlConnection(_connectionstring))
+            {
+                conn.Open();
+
+                string query = "SELECT * FROM prescriptions";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Prescription prescription = new Prescription()
+                        {
+                            Id = reader.GetInt32("id"),
+                            PatientId = reader.GetInt32("patient_id"),
+                            DoctorId = reader.GetInt32("doctor_id"),
+                            MedicineId = reader.GetInt32("medicine_id"),
+                            DosageInstruction = reader.GetString("dosage_instruction"),
+
+                        };
+                        prescriptions.Add(prescription);
+                    }
+                }
+            }
+            return prescriptions;
+        }
+
 
 
         public List<Patient> GetAllPatients()
@@ -271,6 +305,70 @@ namespace HospitalAppointmentSystem.repositories
             return comments;
         }
 
+        public List<Prescription> GetPrescriptionsByPatientId(int patientId)
+        {
+            List<Prescription> prescriptions = new List<Prescription>();
+
+            using (MySqlConnection conn = new MySqlConnection(_connectionstring))
+            {
+                conn.Open();
+
+                string query = "SELECT * FROM prescriptions WHERE patient_id=@patient_id";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                cmd.Parameters.AddWithValue("@patient_id", patientId);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Prescription prescription = new Prescription
+                        {
+                            Id = reader.GetInt32("id"),
+                            PatientId = reader.GetInt32("patient_id"),
+                            DoctorId = reader.GetInt32("doctor_id"),
+                            MedicineId = reader.GetInt32("medicine_id"),
+                            DosageInstruction = reader.GetString("dosage_instruction"),
+                        };
+
+                        prescriptions.Add(prescription);
+                    }
+                }
+            }
+            return prescriptions;
+        }
+
+        public Medicine GetMedicineById(int id)
+        {
+
+            using (MySqlConnection conn = new MySqlConnection(_connectionstring))
+            {
+                conn.Open();
+
+                string query = "SELECT * FROM medicines WHERE id=@id";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                cmd.Parameters.AddWithValue("@id", id);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Medicine medicine = new Medicine()
+                        {
+                            Id = reader.GetInt32("id"),
+                            Name = reader.GetString("name"),
+
+                        };
+
+                        return medicine;
+                    }
+                }
+            }
+            return null;
+        }
 
 
         public List<Comment> GetCommentsByDoctorId(int doctor_id)
@@ -609,17 +707,43 @@ namespace HospitalAppointmentSystem.repositories
             }
         }
 
-        public void AddMedicine(string medicine_name)
+
+        public void AddPrescription(DateTime end_date, int patient_id, int doctor_id, int medicine_id, string dosage_instruction)
         {
             using(MySqlConnection conn = new MySqlConnection(_connectionstring))
             {
                 conn.Open();
                 
-                string query = "INSERT INTO medicines (name) VALUES (@medicine_name)";
+                string query = "INSERT INTO prescriptions (date, patient_id, doctor_id, medicine_id, dosage_instruction) VALUES (@end_date, @patient_id, @doctor_id, @medicine_id, @dosage_instruction)";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@end_date", end_date);
+                    cmd.Parameters.AddWithValue("@patient_id", patient_id);
+                    cmd.Parameters.AddWithValue("@doctor_id", doctor_id);
+                    cmd.Parameters.AddWithValue("@medicine_id", medicine_id);
+                    cmd.Parameters.AddWithValue("@dosage_instruction", dosage_instruction);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0) {
+                        MessageBox.Show("Writing Successful");
+                    }
+                }
+            }
+        }
+
+        public void AddMedicine(string medicine_name, string image_path)
+        {
+            using(MySqlConnection conn = new MySqlConnection(_connectionstring))
+            {
+                conn.Open();
+                
+                string query = "INSERT INTO medicines (name, image_path) VALUES (@medicine_name, @image_path)";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@medicine_name", medicine_name);
+                    cmd.Parameters.AddWithValue("@image_path", image_path);
 
                     int rowsAffected = cmd.ExecuteNonQuery();
                     if (rowsAffected > 0) {
@@ -630,18 +754,20 @@ namespace HospitalAppointmentSystem.repositories
         }
 
 
-        public void UpdateDoctor(int id,string name, string profession, string doctor_image_path)
+        public void UpdateDoctor(int id,string name, string email, string password, string profession, string doctor_image_path)
         {
             using(MySqlConnection conn = new MySqlConnection(_connectionstring))
             {
                 conn.Open();
                 
-                string query = "UPDATE doctors SET doctor_name=@doctor_name, profession=@profession, doctor_image_path=@doctor_image_path WHERE id=@id";
+                string query = "UPDATE doctors SET doctor_name=@doctor_name, email=@email, password=@password, profession=@profession, doctor_image_path=@doctor_image_path WHERE id=@id";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@id", id);
                     cmd.Parameters.AddWithValue("@doctor_name", name);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@password", password);
                     cmd.Parameters.AddWithValue("@profession", profession);
                     cmd.Parameters.AddWithValue("@doctor_image_path", doctor_image_path);
 
@@ -782,6 +908,7 @@ namespace HospitalAppointmentSystem.repositories
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string ImagePath{ get; set; }
     }
 
     public class Prescription

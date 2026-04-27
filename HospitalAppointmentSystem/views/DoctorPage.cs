@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HospitalAppointmentSystem.repositories;
+using HospitalAppointmentSystem.services;
 
 namespace HospitalAppointmentSystem.views
 {
@@ -19,7 +20,7 @@ namespace HospitalAppointmentSystem.views
 
         public DoctorPage(int doctorId)
         {
-            
+
             InitializeComponent();
 
             _repo = new MainRepository();
@@ -31,6 +32,11 @@ namespace HospitalAppointmentSystem.views
         {
             dataGridView1.DataSource = _repo.GetAppointmentsByDoctorId(_doctorId);
 
+        }
+
+        private void btn_goToPrescriptions_Click(object sender, EventArgs e)
+        {
+            NavigationService.NavigateTo(new PrescriptionPage());
         }
     }
 }

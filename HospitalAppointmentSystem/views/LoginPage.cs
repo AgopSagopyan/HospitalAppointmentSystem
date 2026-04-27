@@ -32,6 +32,8 @@ namespace HospitalAppointmentSystem.views
 
         private void btn_login_Click(object sender, EventArgs e)
         {
+
+            /* WORKING CODE
             switch (selectedValue)
             {
                 case "patient_login":
@@ -51,6 +53,24 @@ namespace HospitalAppointmentSystem.views
                     _controller.AdminLogin(txt_email.Text, txt_password.Text);
                     break;
             }
+            */
+
+            //DEMO CODE
+
+            switch (selectedValue)
+            {
+                case "patient_login":
+                    NavigationService.NavigateTo(new MainPageTest());
+                    break;
+                case "doctor_login":
+                    NavigationService.NavigateTo(new DoctorPage(23));
+                    break;
+                case "admin_login":
+                    NavigationService.NavigateTo(new AdminPage());
+                    break;
+            }
+
+
         }
 
         private void link_goToSignup_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

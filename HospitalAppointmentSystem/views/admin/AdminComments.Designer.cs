@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            flowLayoutPanel1 = new FlowLayoutPanel();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             dataGridView1 = new DataGridView();
             richTextBox1 = new RichTextBox();
             btn_sendComment = new Button();
@@ -125,7 +125,7 @@
 
         #endregion
 
-        private FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private DataGridView dataGridView1;
         private RichTextBox richTextBox1;
         private Button btn_sendComment;

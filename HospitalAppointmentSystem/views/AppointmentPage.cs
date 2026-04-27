@@ -39,15 +39,19 @@ namespace HospitalAppointmentSystem.views
             TimeSpan end = start.Add(TimeSpan.FromMinutes(10));
 
             _repo.AddAppointment(combo_clinic.Text, combo_doctorName.Text, Convert.ToInt16(combo_doctorName.SelectedValue), 1, dateTimePicker1.Value, start, end);
+
+            dataGridView1.DataSource = _repo.GetAllAppointments();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            NavigationService.NavigateTo(new MainPage());
+            NavigationService.NavigateTo(new MainPageTest());
         }
 
         private void AppointmentPage_Load(object sender, EventArgs e)
         {
+            dataGridView1.DataSource = _repo.GetAllAppointments();
+
             combo_clinic.DataSource = _repo.GetAllProfessions();
             combo_clinic.DisplayMember = "ProfessionName";
             combo_clinic.ValueMember = "ProfessionName";

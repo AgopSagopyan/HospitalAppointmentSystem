@@ -49,7 +49,7 @@ namespace HospitalAppointmentSystem.views
 
         private void button5_Click(object sender, EventArgs e)
         {
-            NavigationService.NavigateTo(new AppointmentPage());
+            NavigationService.NavigateTo(new LoginPage());
         }
 
         private void button6_Click(object sender, EventArgs e)

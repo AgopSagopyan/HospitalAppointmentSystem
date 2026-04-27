@@ -190,11 +190,11 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = HospitalAppointmentSystem.Properties.Resources.Vector_doctor_examining_a_patient_at_the_clinic_portraying_20_qualities_that_make_a_good_doctor_1200x900;
+            pictureBox1.Image = Properties.Resources.Vector_doctor_examining_a_patient_at_the_clinic_portraying_20_qualities_that_make_a_good_doctor_1200x900;
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(640, 720);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
             // 

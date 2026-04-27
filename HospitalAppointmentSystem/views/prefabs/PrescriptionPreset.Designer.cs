@@ -1,4 +1,4 @@
-﻿namespace HospitalAppointmentSystem.views.FlowLayoutPanel
+﻿namespace HospitalAppointmentSystem.views.prefabs
 {
     partial class PrescriptionPreset
     {
@@ -41,16 +41,17 @@
             pictureBox1.Image = Properties.Resources._39fb6acd8c7f4c3283f1f0084e73a5b4_parol_ne_ise_yarar_parol_ne_icin_kullanilir_e0ed0ba3;
             pictureBox1.Location = new Point(17, 16);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(136, 117);
+            pictureBox1.Size = new Size(105, 75);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // richTextBox1
             // 
-            richTextBox1.Location = new Point(55, 186);
+            richTextBox1.Enabled = false;
+            richTextBox1.Location = new Point(17, 109);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(637, 187);
+            richTextBox1.Size = new Size(689, 205);
             richTextBox1.TabIndex = 1;
             richTextBox1.Text = "";
             // 
@@ -59,7 +60,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(178, 46);
+            label1.Location = new Point(128, 33);
             label1.Name = "label1";
             label1.Size = new Size(91, 45);
             label1.TabIndex = 2;
@@ -73,8 +74,9 @@
             panel1.Controls.Add(richTextBox1);
             panel1.Location = new Point(15, 12);
             panel1.Name = "panel1";
-            panel1.Size = new Size(784, 406);
+            panel1.Size = new Size(733, 329);
             panel1.TabIndex = 3;
+            panel1.Paint += panel1_Paint;
             // 
             // PrescriptionPreset
             // 
@@ -83,7 +85,7 @@
             BackColor = Color.FromArgb(30, 30, 30);
             Controls.Add(panel1);
             Name = "PrescriptionPreset";
-            Size = new Size(816, 433);
+            Size = new Size(766, 354);
             Load += PrescriptionPreset_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);

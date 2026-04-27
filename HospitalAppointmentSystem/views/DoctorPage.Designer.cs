@@ -30,6 +30,7 @@
         {
             dataGridView1 = new DataGridView();
             label1 = new Label();
+            btn_goToPrescriptions = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -52,11 +53,22 @@
             label1.TabIndex = 1;
             label1.Text = "My Appointments";
             // 
+            // btn_goToPrescriptions
+            // 
+            btn_goToPrescriptions.Location = new Point(844, 275);
+            btn_goToPrescriptions.Name = "btn_goToPrescriptions";
+            btn_goToPrescriptions.Size = new Size(214, 63);
+            btn_goToPrescriptions.TabIndex = 2;
+            btn_goToPrescriptions.Text = "Go To Prescriptions";
+            btn_goToPrescriptions.UseVisualStyleBackColor = true;
+            btn_goToPrescriptions.Click += btn_goToPrescriptions_Click;
+            // 
             // DoctorPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(30, 30, 30);
+            Controls.Add(btn_goToPrescriptions);
             Controls.Add(label1);
             Controls.Add(dataGridView1);
             Name = "DoctorPage";
@@ -71,5 +83,6 @@
 
         private DataGridView dataGridView1;
         private Label label1;
+        private Button btn_goToPrescriptions;
     }
 }

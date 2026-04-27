@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using HospitalAppointmentSystem.views.flowLayoutPanel;
+using HospitalAppointmentSystem.views.prefabs;
 using HospitalAppointmentSystem.repositories;
 
 

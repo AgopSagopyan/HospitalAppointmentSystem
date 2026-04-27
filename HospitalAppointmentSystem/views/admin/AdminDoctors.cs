@@ -103,7 +103,10 @@ namespace HospitalAppointmentSystem.views.admin
                     try
                     {
                         pictureBox1.Image = Image.FromFile(row.Cells["DoctorImagePath"].Value.ToString());
-                    } catch
+                        lastUploadedFilePath = row.Cells["DoctorImagePath"].Value.ToString();
+
+                    }
+                    catch
                     {
                         MessageBox.Show("Path is Empty");
                     }
@@ -131,8 +134,13 @@ namespace HospitalAppointmentSystem.views.admin
 
         private void button1_Click(object sender, EventArgs e)
         {
-            _repo.UpdateDoctor(doctorId, txt_doctorName.Text, combo_profession.Text, lastUploadedFilePath);
+            _repo.UpdateDoctor(doctorId, txt_doctorName.Text, txt_doctorEmail.Text, txt_doctorPassword.Text, combo_profession.Text, lastUploadedFilePath);
             dataGridView1.DataSource = _repo.GetAllDoctors();
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

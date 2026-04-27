@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using HospitalAppointmentSystem.repositories;
 
-namespace HospitalAppointmentSystem.views.flowLayoutPanel
+namespace HospitalAppointmentSystem.views.prefabs
 {
     public partial class CommentPreset : UserControl
     {

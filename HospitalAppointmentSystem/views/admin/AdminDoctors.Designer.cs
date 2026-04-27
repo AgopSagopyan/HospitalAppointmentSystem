@@ -128,6 +128,7 @@
             label4.Size = new Size(40, 15);
             label4.TabIndex = 9;
             label4.Text = "Image";
+            label4.Click += label4_Click;
             // 
             // btn_imagePicker
             // 
@@ -141,7 +142,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = HospitalAppointmentSystem.Properties.Resources.social_media_chatting_online_default_male_blank_profile_picture_head_and_body_icon_people_standing_icon_grey_background_free_vector;
+            pictureBox1.Image = Properties.Resources.social_media_chatting_online_default_male_blank_profile_picture_head_and_body_icon_people_standing_icon_grey_background_free_vector;
             pictureBox1.Location = new Point(97, 317);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(136, 106);
