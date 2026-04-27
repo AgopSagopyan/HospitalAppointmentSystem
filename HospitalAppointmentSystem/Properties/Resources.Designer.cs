@@ -63,6 +63,17 @@ namespace HospitalAppointmentSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _39fb6acd8c7f4c3283f1f0084e73a5b4_parol_ne_ise_yarar_parol_ne_icin_kullanilir_e0ed0ba3 {
+            get {
+                object obj = ResourceManager.GetObject("39fb6acd8c7f4c3283f1f0084e73a5b4-parol-ne-ise-yarar-parol-ne-icin-kullanilir-e0ed" +
+                        "0ba3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap social_media_chatting_online_default_male_blank_profile_picture_head_and_body_icon_people_standing_icon_grey_background_free_vector {
             get {
                 object obj = ResourceManager.GetObject("social-media-chatting-online-default-male-blank-profile-picture-head-and-body-ico" +

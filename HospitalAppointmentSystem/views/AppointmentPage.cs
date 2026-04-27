@@ -38,7 +38,7 @@ namespace HospitalAppointmentSystem.views
 
             TimeSpan end = start.Add(TimeSpan.FromMinutes(10));
 
-            _repo.AddAppointment(combo_clinic.Text, combo_doctorName.Text, Convert.ToInt16(combo_doctorName.SelectedValue), dateTimePicker1.Value, start, end);
+            _repo.AddAppointment(combo_clinic.Text, combo_doctorName.Text, Convert.ToInt16(combo_doctorName.SelectedValue), 1, dateTimePicker1.Value, start, end);
         }
 
         private void button4_Click(object sender, EventArgs e)
