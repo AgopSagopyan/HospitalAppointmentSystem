@@ -45,7 +45,7 @@ namespace HospitalAppointmentSystem.views
 
         private void button4_Click(object sender, EventArgs e)
         {
-            NavigationService.NavigateTo(new MainPageTest(null));
+            NavigationService.NavigateTo(new MainPageTest(SessionHolder.LoggedInUser));
         }
 
         private void AppointmentPage_Load(object sender, EventArgs e)
