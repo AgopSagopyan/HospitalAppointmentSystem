@@ -30,8 +30,15 @@ namespace HospitalAppointmentSystem.views.admin
 
         private void btn_medicineAdd_Click(object sender, EventArgs e)
         {
-            _repo.AddMedicine(textBox1.Text, lastUploadedFilePath);
-            dataGridView1.DataSource = _repo.GetAllMedicines();
+            if (textBox1.Text != null && lastUploadedFilePath != null) { 
+                
+                _repo.AddMedicine(textBox1.Text, lastUploadedFilePath);
+            } else
+            {
+                MessageBox.Show("Fill All Spaces");
+            }
+
+                dataGridView1.DataSource = _repo.GetAllMedicines();
         }
 
         private void AdminMedicines_Load(object sender, EventArgs e)

@@ -18,6 +18,8 @@ namespace HospitalAppointmentSystem.views
         private MainRepository _repo;
         private MainController _controller;
 
+        private bool passwordEnable = true;
+
         string selectedValue = "";
 
 
@@ -33,42 +35,52 @@ namespace HospitalAppointmentSystem.views
         private void btn_login_Click(object sender, EventArgs e)
         {
 
-            /* WORKING CODE
-            switch (selectedValue)
+            if (passwordEnable)
             {
-                case "patient_login":
-                    if(txt_email.Text.Contains("@"))
-                    {
-                        _controller.PatientLogin(txt_email.Text, txt_password.Text);
-                    } else {
-                        MessageBox.Show("Please enter a valid email address.");
-                    }
-                    break;
-                case "doctor_login":
-                    _controller.DoctorLogin(txt_email.Text, txt_password.Text);
-                    break;
 
 
-                case "admin_login":
-                    _controller.AdminLogin(txt_email.Text, txt_password.Text);
-                    break;
+                switch (selectedValue)
+                {
+                    case "patient_login":
+                        if (txt_email.Text.Contains("@"))
+                        {
+                            _controller.PatientLogin(txt_email.Text, txt_password.Text);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please enter a valid email address.");
+                        }
+                        break;
+                    case "doctor_login":
+                        _controller.DoctorLogin(txt_email.Text, txt_password.Text);
+                        break;
+
+
+                    case "admin_login":
+                        _controller.AdminLogin(txt_email.Text, txt_password.Text);
+                        break;
+                }
+
             }
-            */
+            else
+            {
 
+                switch (selectedValue)
+                {
+                    case "patient_login":
+                        NavigationService.NavigateTo(new MainPageTest(null));
+                        break;
+                    case "doctor_login":
+                        NavigationService.NavigateTo(new DoctorPage(23));
+                        break;
+                    case "admin_login":
+                        NavigationService.NavigateTo(new AdminPage());
+                        break;
+                }
+
+            }
             //DEMO CODE
 
-            switch (selectedValue)
-            {
-                case "patient_login":
-                    NavigationService.NavigateTo(new MainPageTest());
-                    break;
-                case "doctor_login":
-                    NavigationService.NavigateTo(new DoctorPage(23));
-                    break;
-                case "admin_login":
-                    NavigationService.NavigateTo(new AdminPage());
-                    break;
-            }
 
 
         }
@@ -88,12 +100,17 @@ namespace HospitalAppointmentSystem.views
         {
             RadioButton rb = sender as RadioButton;
 
-            if(rb != null && rb.Checked)
+            if (rb != null && rb.Checked)
             {
                 selectedValue = rb.Tag.ToString();
 
                 //MessageBox.Show("Variable is now: " + selectedValue);
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

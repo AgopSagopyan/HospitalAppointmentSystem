@@ -35,12 +35,10 @@ namespace HospitalAppointmentSystem.views.prefabs
             if (medicine != null) { 
                 label1.Text = medicine.Name;
 
-                if (medicine.ImagePath != null) { 
-                    pictureBox1.Image = Image.FromFile(medicine.ImagePath);
-                } else
-                {
-                    pictureBox1.Image = null;
-                }
+                label2.Text = _prescription.Date.ToString();
+
+                pictureBox1.Image = Image.FromFile(medicine.ImagePath);
+
 
             }
 

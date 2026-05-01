@@ -37,7 +37,7 @@ namespace HospitalAppointmentSystem.views.admin
         {
             if (textBox1.Text != "" && textBox2.Text != "")
             {
-                _controller.AddPatient(textBox1.Text, textBox2.Text);
+                _repo.PatientSignup(textBox1.Text, textBox2.Text, textBox3.Text);
 
             }
 

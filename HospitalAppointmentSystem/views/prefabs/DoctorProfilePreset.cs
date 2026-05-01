@@ -11,31 +11,37 @@ using HospitalAppointmentSystem.repositories;
 
 namespace HospitalAppointmentSystem.views.prefabs
 {
-    public partial class CommentPreset : UserControl
+    public partial class DoctorProfilePreset : UserControl
     {
-        private Comment _comment;
+        private readonly MainRepository _repo;
 
-        public CommentPreset(Comment comment)
+        private Doctor _doctor;
+
+        public DoctorProfilePreset(Doctor doctor)
         {
             InitializeComponent();
 
-            _comment = comment;
+            _repo = new MainRepository();
+
+            _doctor = doctor;
+
+
         }
 
-        private void Comment_Load(object sender, EventArgs e)
+        private void DoctorProfilePreset_Load(object sender, EventArgs e)
         {
-            richTextBox1.Text = _comment.Content;
+            label1.Text = _doctor.Name;
 
-            label1.Text = _comment.Sender;
+            label2.Text = _repo.GetDoctorStarAvarageById(_doctor.Id).ToString();
 
-            star1.Hide();
-            star2.Hide();
-            star3.Hide();
-            star4.Hide();
-            star5.Hide();
+            pictureBox1.Image = Image.FromFile(_doctor.DoctorImagePath);
+        }
 
-            switch (_comment.StarCount)
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            switch(_repo.GetDoctorStarAvarageById(_doctor.Id))
             {
+
                 case (1):
                     star1.Show();
                     star2.Hide();

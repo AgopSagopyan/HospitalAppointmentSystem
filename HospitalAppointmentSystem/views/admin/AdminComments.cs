@@ -66,7 +66,15 @@ namespace HospitalAppointmentSystem.views.admin
         private void btn_sendComment_Click(object sender, EventArgs e)
         {
 
-                _repo.SendComment("admin", comboBox1.Text, Convert.ToInt32(comboBox1.SelectedValue), richTextBox1.Text);
+            if(comboBox1.Text != null && richTextBox1.Text != null)
+            {
+                _repo.SendComment("admin", comboBox1.Text, Convert.ToInt32(comboBox1.SelectedValue), richTextBox1.Text, 0);
+
+            } else
+            {
+                MessageBox.Show("Fill All Spaces");
+            }
+
 
                 List<Comment> commentList = _repo.GetCommentsByDoctorId(Convert.ToInt32(comboBox1.SelectedValue));
 

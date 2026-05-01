@@ -14,13 +14,16 @@ namespace HospitalAppointmentSystem.controllers
             _repo = new MainRepository();
         }
 
-        public void PatientLogin(string username, string password)
+        public void PatientLogin(string email, string password)
         {
-            Patient patient = _repo.PatientLogin(username, password);
+            Patient patient = _repo.PatientLogin(email, password);
 
             if (patient != null) {
 
-                NavigationService.NavigateTo(new MainPage());
+                SessionHolder.LoggedInUser = patient;
+
+                NavigationService.NavigateTo(new MainPageTest(SessionHolder.LoggedInUser));
+
 
             } else
             {

@@ -52,7 +52,7 @@ namespace HospitalAppointmentSystem.views
 
         private void button1_Click(object sender, EventArgs e)
         {
-            _mainRepository.SendComment("me", "davutdoctor", doctorId, richTextBox1.Text);
+            _mainRepository.SendComment("me", "davutdoctor", doctorId, richTextBox1.Text, 0);
         }
     }
 }

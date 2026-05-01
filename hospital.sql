@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2026 at 05:26 PM
+-- Generation Time: May 01, 2026 at 03:07 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -62,13 +62,8 @@ CREATE TABLE `appointments` (
 --
 
 INSERT INTO `appointments` (`id`, `clinic`, `doctor_name`, `doctor_id`, `patient_id`, `date`, `start_time`, `end_time`) VALUES
-(15, 'radyoloji', 'doktor1', 0, '', '2026-04-20 00:00:00', '11:00:00', '11:10:00'),
-(16, 'kardiyoloji', 'ayhan keser', 0, '', '2026-04-26 00:00:00', '13:00:00', '13:10:00'),
-(17, 'kardiyoloji', 'ayhan keser', 0, '', '2026-04-30 00:00:00', '11:00:00', '11:10:00'),
-(18, 'kardiyoloji', 'ayhan keser', 0, '', '2026-04-28 00:00:00', '13:00:00', '13:10:00'),
-(19, 'kardiyoloji', 'ayhan keser', 18, '', '2026-04-30 00:00:00', '16:00:00', '16:10:00'),
-(20, 'radyoloji', 'emir', 21, '', '2026-04-28 00:00:00', '14:00:00', '14:10:00'),
-(21, 'radyoloji', 'emir', 21, '', '2026-04-27 00:00:00', '16:00:00', '16:10:00');
+(22, 'kardiyoloji', 'emir', 23, '', '2026-05-01 00:00:00', '11:00:00', '11:10:00'),
+(23, 'pedogoji', 'doctor', 25, '', '2026-05-02 00:00:00', '11:00:00', '11:10:00');
 
 -- --------------------------------------------------------
 
@@ -81,24 +76,19 @@ CREATE TABLE `comments` (
   `sender` varchar(50) NOT NULL,
   `subject_doctor` varchar(50) NOT NULL,
   `doctor_id` int(11) NOT NULL,
-  `content` varchar(300) NOT NULL
+  `content` varchar(300) NOT NULL,
+  `star_count` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `comments`
 --
 
-INSERT INTO `comments` (`id`, `sender`, `subject_doctor`, `doctor_id`, `content`) VALUES
-(1, 'me', 'davutdoctor', 0, 'şlaksşkjaşlsdkaşlsd\naskdaşksdjşkajda\naksjdşlajsdşlkjaşdkasd'),
-(2, 'ben', 'davut', 0, 'davuta basiyimmmm cok serttttt'),
-(3, 'me', 'davutdoctor', 0, 'asdasdasdsa'),
-(4, 'me', 'davutdoctor', 0, 'asdasdasdasd'),
-(5, 'me', 'davut', 17, 'asdadasdaweqwe'),
-(7, 'admin', 'ayhan keser', 18, 'asdasdasd'),
-(8, 'admin', 'ayhan keser', 18, 'ayhan keser full guc full doktor'),
-(9, 'admin', 'ayhan keser', 18, 'doktoooor'),
-(10, 'admin', 'ayhan keser', 18, 'sssssssssssssssssssssssss'),
-(11, 'admin', 'emir', 23, 'assssssssssssssss');
+INSERT INTO `comments` (`id`, `sender`, `subject_doctor`, `doctor_id`, `content`, `star_count`) VALUES
+(18, 'admin', 'emir', 23, '', 0),
+(19, 'me', 'deneme', 24, 'cok iyi doktor', 1),
+(20, 'me', 'emir', 23, 'cok kotu doktor', 0),
+(21, 'me', 'doctor', 25, 'sss', 3);
 
 -- --------------------------------------------------------
 
@@ -120,7 +110,7 @@ CREATE TABLE `doctors` (
 --
 
 INSERT INTO `doctors` (`id`, `email`, `password`, `doctor_name`, `profession`, `doctor_image_path`) VALUES
-(23, 'emir@gmail.com', '1234', 'emir', 'kardiyoloji', 'C:\\Users\\MAL\\Documents\\GitHub\\HospitalAppointmentSystem\\HospitalAppointmentSystem\\bin\\Debug\\net8.0-windows\\..\\..\\..\\uploads\\dee23053-8dee-4691-ac5f-d6a2add3e3e9.jpg');
+(25, 'doctor@gmail.com', '1234', 'doctor', 'pedogoji', 'C:\\Users\\MAL\\Documents\\GitHub\\HospitalAppointmentSystem\\HospitalAppointmentSystem\\bin\\Debug\\net8.0-windows\\..\\..\\..\\uploads\\860c2f7a-109e-46b1-b637-f6226d9c48bc.jpg');
 
 -- --------------------------------------------------------
 
@@ -139,7 +129,9 @@ CREATE TABLE `medicines` (
 --
 
 INSERT INTO `medicines` (`id`, `name`, `image_path`) VALUES
-(4, 'aferin', 'C:\\Users\\MAL\\Documents\\GitHub\\HospitalAppointmentSystem\\HospitalAppointmentSystem\\bin\\Debug\\net8.0-windows\\..\\..\\..\\uploads\\0c54dafd-a083-4f67-9fe2-7a09453e3a87.jpg');
+(8, 'trankobuskas', 'C:\\Users\\MAL\\Documents\\GitHub\\HospitalAppointmentSystem\\HospitalAppointmentSystem\\bin\\Debug\\net8.0-windows\\..\\..\\..\\uploads\\788fe976-c42d-418b-8f78-175297abc0e1.jpg'),
+(9, 'aferin', 'C:\\Users\\MAL\\Documents\\GitHub\\HospitalAppointmentSystem\\HospitalAppointmentSystem\\bin\\Debug\\net8.0-windows\\..\\..\\..\\uploads\\775abc1d-e728-41df-8e46-239694fbd052.jpg'),
+(10, 'parol', 'C:\\Users\\MAL\\Documents\\GitHub\\HospitalAppointmentSystem\\HospitalAppointmentSystem\\bin\\Debug\\net8.0-windows\\..\\..\\..\\uploads\\147caab9-4a3c-4cc0-a90f-1aa63ae6e8a2.jpg');
 
 -- --------------------------------------------------------
 
@@ -159,7 +151,8 @@ CREATE TABLE `patients` (
 --
 
 INSERT INTO `patients` (`id`, `name`, `email`, `password`) VALUES
-(12, 'davut', 'davut@gmail.com', '1234');
+(21, 'patient', 'patient@gmail.com', '1234'),
+(23, 'keremcerm', 'keremcemerturk@gmail.com', '12345');
 
 -- --------------------------------------------------------
 
@@ -181,8 +174,11 @@ CREATE TABLE `prescriptions` (
 --
 
 INSERT INTO `prescriptions` (`id`, `date`, `patient_id`, `doctor_id`, `medicine_id`, `dosage_instruction`) VALUES
-(6, '2026-05-02', 1, 0, 4, 'her sabah aksam '),
-(7, '2026-04-24', 1, 0, 1, 'sssssssssssssss');
+(18, '2026-05-30', 21, 1, 9, 'ssssssss'),
+(19, '2026-06-06', 21, 1, 10, 'ssssssss'),
+(20, '2026-05-15', 21, 1, 9, 'ssssssssssssssss'),
+(21, '2026-05-16', 21, 1, 10, 'ssssss'),
+(22, '2026-08-07', 21, 1, 10, 'ssdadasd');
 
 -- --------------------------------------------------------
 
@@ -202,7 +198,9 @@ CREATE TABLE `professions` (
 INSERT INTO `professions` (`id`, `profession`) VALUES
 (1, 'kardiyoloji'),
 (2, 'kulak burun bogaz'),
-(3, 'radyoloji');
+(3, 'radyoloji'),
+(4, 'pedogoji'),
+(5, 'travmatoloji');
 
 --
 -- Indexes for dumped tables
@@ -270,43 +268,43 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `doctors`
 --
 ALTER TABLE `doctors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `medicines`
 --
 ALTER TABLE `medicines`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `prescriptions`
 --
 ALTER TABLE `prescriptions`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `professions`
 --
 ALTER TABLE `professions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

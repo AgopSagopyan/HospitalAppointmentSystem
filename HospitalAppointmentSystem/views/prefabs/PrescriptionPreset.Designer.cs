@@ -32,13 +32,13 @@
             richTextBox1 = new RichTextBox();
             label1 = new Label();
             panel1 = new Panel();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources._39fb6acd8c7f4c3283f1f0084e73a5b4_parol_ne_ise_yarar_parol_ne_icin_kullanilir_e0ed0ba3;
             pictureBox1.Location = new Point(17, 16);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(105, 75);
@@ -62,13 +62,14 @@
             label1.ForeColor = Color.White;
             label1.Location = new Point(128, 33);
             label1.Name = "label1";
-            label1.Size = new Size(91, 45);
+            label1.Size = new Size(245, 45);
             label1.TabIndex = 2;
-            label1.Text = "Parol";
+            label1.Text = "Medicine Name";
             // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(45, 45, 45);
+            panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(richTextBox1);
@@ -77,6 +78,17 @@
             panel1.Size = new Size(733, 329);
             panel1.TabIndex = 3;
             panel1.Paint += panel1_Paint;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(424, 33);
+            label2.Name = "label2";
+            label2.Size = new Size(245, 45);
+            label2.TabIndex = 3;
+            label2.Text = "Medicine Name";
             // 
             // PrescriptionPreset
             // 
@@ -99,5 +111,6 @@
         private RichTextBox richTextBox1;
         private Label label1;
         private Panel panel1;
+        private Label label2;
     }
 }

@@ -57,5 +57,11 @@ namespace HospitalAppointmentSystem.views
             panel2.Controls.Clear();
             panel2.Controls.Add(new AdminMedicines());
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            panel2.Controls.Clear();
+            panel2.Controls.Add(new AdminPoliclinics());
+        }
     }
 }

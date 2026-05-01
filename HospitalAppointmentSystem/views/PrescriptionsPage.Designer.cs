@@ -30,6 +30,7 @@
         {
             comboBox1 = new ComboBox();
             panel1 = new Panel();
+            button2 = new Button();
             label1 = new Label();
             label3 = new Label();
             button1 = new Button();
@@ -48,19 +49,34 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(57, 113);
+            comboBox1.Location = new Point(24, 95);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(266, 23);
             comboBox1.TabIndex = 0;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(30, 30, 30);
+            panel1.Controls.Add(button2);
             panel1.Controls.Add(label1);
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
             panel1.Size = new Size(1277, 54);
             panel1.TabIndex = 1;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.Red;
+            button2.FlatStyle = FlatStyle.Popup;
+            button2.ForeColor = Color.White;
+            button2.Location = new Point(3, 9);
+            button2.Name = "button2";
+            button2.Size = new Size(139, 36);
+            button2.TabIndex = 1;
+            button2.Text = "Go Back";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // label1
             // 
@@ -77,7 +93,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 162);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(57, 85);
+            label3.Location = new Point(24, 67);
             label3.Name = "label3";
             label3.Size = new Size(72, 25);
             label3.TabIndex = 0;
@@ -89,7 +105,7 @@
             button1.FlatStyle = FlatStyle.Popup;
             button1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(57, 580);
+            button1.Location = new Point(24, 562);
             button1.Name = "button1";
             button1.Size = new Size(159, 57);
             button1.TabIndex = 11;
@@ -99,7 +115,7 @@
             // 
             // richTextBox1
             // 
-            richTextBox1.Location = new Point(57, 354);
+            richTextBox1.Location = new Point(24, 336);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.Size = new Size(411, 191);
             richTextBox1.TabIndex = 10;
@@ -110,7 +126,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 162);
             label6.ForeColor = Color.White;
-            label6.Location = new Point(57, 326);
+            label6.Location = new Point(24, 308);
             label6.Name = "label6";
             label6.Size = new Size(196, 25);
             label6.TabIndex = 9;
@@ -118,7 +134,7 @@
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(57, 276);
+            dateTimePicker1.Location = new Point(24, 258);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(266, 23);
             dateTimePicker1.TabIndex = 8;
@@ -128,7 +144,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(57, 248);
+            label5.Location = new Point(24, 230);
             label5.Name = "label5";
             label5.Size = new Size(121, 25);
             label5.TabIndex = 7;
@@ -137,7 +153,7 @@
             // comboBox2
             // 
             comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(57, 190);
+            comboBox2.Location = new Point(24, 172);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(266, 23);
             comboBox2.TabIndex = 6;
@@ -147,7 +163,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(57, 157);
+            label4.Location = new Point(24, 139);
             label4.Name = "label4";
             label4.Size = new Size(93, 25);
             label4.TabIndex = 5;
@@ -210,5 +226,6 @@
         private RichTextBox richTextBox1;
         private DataGridView dataGridView1;
         private FlowLayoutPanel flowLayoutPanel1;
+        private Button button2;
     }
 }

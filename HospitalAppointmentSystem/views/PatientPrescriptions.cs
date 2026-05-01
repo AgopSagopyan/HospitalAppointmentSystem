@@ -17,20 +17,20 @@ namespace HospitalAppointmentSystem.views
     {
         private readonly MainRepository _repo;
 
-        private int _patientId;
+        private Patient _patient;
 
-        public PatientPrescriptions(int patientId)
+        public PatientPrescriptions(Patient patient)
         {
             InitializeComponent();
 
             _repo = new MainRepository();
 
-            _patientId = patientId;
+            _patient = patient;
         }
 
         private void PatientPrescriptions_Load(object sender, EventArgs e)
         {
-            List<Prescription> prescriptionList = _repo.GetPrescriptionsByPatientId(_patientId);
+            List<Prescription> prescriptionList = _repo.GetPrescriptionsByPatientId(_patient.Id);
 
             flowLayoutPanel1.Controls.Clear();
 
@@ -46,7 +46,7 @@ namespace HospitalAppointmentSystem.views
 
         private void button1_Click(object sender, EventArgs e)
         {
-            NavigationService.NavigateTo(new MainPageTest());
+            NavigationService.NavigateTo(new MainPageTest(SessionHolder.LoggedInUser));
         }
     }
 }

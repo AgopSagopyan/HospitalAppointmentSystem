@@ -38,5 +38,35 @@ namespace HospitalAppointmentSystem.services
 
 
         }
+
+        public bool SendNotificationEmail(string recieverEmail, string notificationContent)
+        {
+            try
+            {
+                MailMessage msj = new MailMessage();
+                SmtpClient client = new SmtpClient();
+
+                client.Credentials = new NetworkCredential("aybeydavutefe@gmail.com", "jspp odhm pbhw pewc");
+                client.Port = 587;
+                client.Host = "smtp.gmail.com";
+                client.EnableSsl = true;
+
+                msj.To.Add(recieverEmail);
+                msj.From = new MailAddress("aybeydavutefe@gmail.com");
+                msj.Subject = "İlaç Hatırlatması";
+                msj.Body = notificationContent;
+
+                client.Send(msj);
+
+
+                return true;
+
+            }
+            catch (Exception ex) { 
+                MessageBox.Show(ex.Message);
+
+                return false;
+            }
+        }
     }
 }

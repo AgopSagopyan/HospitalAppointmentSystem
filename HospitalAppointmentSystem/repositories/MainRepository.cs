@@ -116,6 +116,29 @@ namespace HospitalAppointmentSystem.repositories
             return medicines;
         }
 
+        public int GetDoctorStarAvarageById(int id)
+        {
+            using (MySqlConnection conn = new MySqlConnection(_connectionstring))
+            {
+                conn.Open();
+
+                string query = "SELECT AVG(star_count) FROM comments WHERE doctor_id=@id";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                cmd.Parameters.AddWithValue("@id", id);
+
+                object result = cmd.ExecuteScalar();
+
+                if (result != null && result != DBNull.Value)
+                {
+                    return Convert.ToInt32(result);
+                }
+
+                return 0;
+            }
+        }
+
         public List<Prescription> GetAllPrescriptions()
         {
             List<Prescription> prescriptions = new List<Prescription>();
@@ -135,6 +158,7 @@ namespace HospitalAppointmentSystem.repositories
                         Prescription prescription = new Prescription()
                         {
                             Id = reader.GetInt32("id"),
+                            Date = reader.GetDateTime("date"),
                             PatientId = reader.GetInt32("patient_id"),
                             DoctorId = reader.GetInt32("doctor_id"),
                             MedicineId = reader.GetInt32("medicine_id"),
@@ -246,6 +270,74 @@ namespace HospitalAppointmentSystem.repositories
             return doctors;
         }
 
+        public Doctor GetDoctorById(int id)
+        {
+
+            using (MySqlConnection conn = new MySqlConnection(_connectionstring))
+            {
+                conn.Open();
+
+                string query = "SELECT * FROM doctors WHERE id=@id";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                cmd.Parameters.AddWithValue("@id", id);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Doctor doctor = new Doctor()
+                        {
+                            Id = reader.GetInt32("id"),
+                            Name = reader.GetString("doctor_name"),
+                            Profession = reader.GetString("profession"),
+                            Email = reader.GetString("email"),
+                            Password = reader.GetString("password"),
+                            DoctorImagePath = reader.GetString("doctor_image_path")
+                            
+                        };
+                        return doctor;
+                    }
+                }
+
+            }
+            return null;
+        }
+
+        public Patient GetPatientById(int id)
+        {
+
+            using (MySqlConnection conn = new MySqlConnection(_connectionstring))
+            {
+                conn.Open();
+
+                string query = "SELECT * FROM patients WHERE id=@id";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                cmd.Parameters.AddWithValue("@id", id);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Patient patient = new Patient()
+                        {
+                            Id = reader.GetInt32("id"),
+                            Name = reader.GetString("name"),
+                            Email = reader.GetString("email"),
+                            Password = reader.GetString("password"),
+                            
+                        };
+                        return patient;
+                    }
+                }
+
+            }
+            return null;
+        }
+
         public List<Profession> GetAllProfessions()
         {
             List<Profession> professions = new List<Profession>();
@@ -296,6 +388,7 @@ namespace HospitalAppointmentSystem.repositories
                             Sender = reader.GetString("sender"),
                             SubjectDoctor = reader.GetString("subject_doctor"),
                             Content = reader.GetString("content"),
+                            StarCount = reader.GetInt32("star_count"),
                         };
 
                         comments.Add(comment);
@@ -326,6 +419,7 @@ namespace HospitalAppointmentSystem.repositories
                         Prescription prescription = new Prescription
                         {
                             Id = reader.GetInt32("id"),
+                            Date = reader.GetDateTime("date"),
                             PatientId = reader.GetInt32("patient_id"),
                             DoctorId = reader.GetInt32("doctor_id"),
                             MedicineId = reader.GetInt32("medicine_id"),
@@ -360,6 +454,7 @@ namespace HospitalAppointmentSystem.repositories
                         {
                             Id = reader.GetInt32("id"),
                             Name = reader.GetString("name"),
+                            ImagePath = reader.GetString("image_path"),
 
                         };
 
@@ -396,6 +491,7 @@ namespace HospitalAppointmentSystem.repositories
                             SubjectDoctor = reader.GetString("subject_doctor"),
                             DoctorId = reader.GetInt32("doctor_id"),
                             Content = reader.GetString("content"),
+                            StarCount = reader.GetInt32("star_count"),
                         };
 
                         comments.Add(comment);
@@ -613,13 +709,13 @@ namespace HospitalAppointmentSystem.repositories
 
 
 
-        public void SendComment(string sender, string subject_doctor, int doctor_id, string content)
+        public void SendComment(string sender, string subject_doctor, int doctor_id, string content, int star_count)
         {
             using(MySqlConnection conn = new MySqlConnection(_connectionstring))
             {
                 conn.Open();
 
-                string query = "INSERT INTO comments (sender, subject_doctor, doctor_id, content) VALUES (@sender, @subject_doctor, @doctor_id, @content)";
+                string query = "INSERT INTO comments (sender, subject_doctor, doctor_id, content, star_count) VALUES (@sender, @subject_doctor, @doctor_id, @content, @star_count)";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
@@ -627,6 +723,7 @@ namespace HospitalAppointmentSystem.repositories
                     cmd.Parameters.AddWithValue("@subject_doctor", subject_doctor);
                     cmd.Parameters.AddWithValue("@doctor_id", doctor_id);
                     cmd.Parameters.AddWithValue("@content", content);
+                    cmd.Parameters.AddWithValue("@star_count", star_count);
 
                     int rowsAffected = cmd.ExecuteNonQuery();
 
@@ -707,6 +804,26 @@ namespace HospitalAppointmentSystem.repositories
             }
         }
 
+        public void AddProfession(string profession_name)
+        {
+            using(MySqlConnection conn = new MySqlConnection(_connectionstring))
+            {
+                conn.Open();
+                
+                string query = "INSERT INTO professions (profession) VALUES (@profession)";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@profession", profession_name);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0) {
+                        MessageBox.Show("Write Successful");
+                    }
+                }
+            }
+        }
+
 
         public void AddPrescription(DateTime end_date, int patient_id, int doctor_id, int medicine_id, string dosage_instruction)
         {
@@ -778,6 +895,28 @@ namespace HospitalAppointmentSystem.repositories
                 }
             }
         }
+
+        public void UpdateProfession(int id,string name)
+        {
+            using(MySqlConnection conn = new MySqlConnection(_connectionstring))
+            {
+                conn.Open();
+                
+                string query = "UPDATE professions SET profession=@name WHERE id=@id";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@name", name);
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0) {
+                        MessageBox.Show("Update Succesful");
+                    }
+                }
+            }
+        }
+
         public void UpdatePatient(int id,string name, string email, string password)
         {
             using(MySqlConnection conn = new MySqlConnection(_connectionstring))
@@ -810,6 +949,26 @@ namespace HospitalAppointmentSystem.repositories
                 conn.Open();
                 
                 string query = "DELETE FROM doctors WHERE id=@id";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0) {
+                        MessageBox.Show("Deletion Successful");
+                    }
+                }
+            }
+        }
+
+        public void DeleteProfession(int id)
+        {
+            using(MySqlConnection conn = new MySqlConnection(_connectionstring))
+            {
+                conn.Open();
+                
+                string query = "DELETE FROM professions WHERE id=@id";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
@@ -902,6 +1061,7 @@ namespace HospitalAppointmentSystem.repositories
         public int DoctorId { get; set; }
 
         public string Content { get; set; }
+        public int StarCount { get; set; }
     }
 
     public class Medicine

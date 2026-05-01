@@ -36,12 +36,14 @@
             button2 = new Button();
             button1 = new Button();
             panel2 = new Panel();
+            button7 = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(45, 45, 45);
+            panel1.Controls.Add(button7);
             panel1.Controls.Add(button6);
             panel1.Controls.Add(button5);
             panel1.Controls.Add(button4);
@@ -139,6 +141,19 @@
             panel2.Size = new Size(1074, 720);
             panel2.TabIndex = 1;
             // 
+            // button7
+            // 
+            button7.BackColor = Color.FromArgb(60, 60, 60);
+            button7.FlatStyle = FlatStyle.Popup;
+            button7.ForeColor = Color.White;
+            button7.Location = new Point(6, 279);
+            button7.Name = "button7";
+            button7.Size = new Size(194, 49);
+            button7.TabIndex = 6;
+            button7.Text = "Manage Policlinics";
+            button7.UseVisualStyleBackColor = false;
+            button7.Click += button7_Click;
+            // 
             // AdminPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -162,5 +177,6 @@
         private Button button4;
         private Button button5;
         private Button button6;
+        private Button button7;
     }
 }

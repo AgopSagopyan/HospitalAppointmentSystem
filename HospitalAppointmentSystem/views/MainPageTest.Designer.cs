@@ -33,10 +33,12 @@
             button2 = new Button();
             label1 = new Label();
             panelTopbar = new Panel();
+            button1 = new Button();
             button6 = new Button();
             panel1 = new Panel();
             label3 = new Label();
             label2 = new Label();
+            flowLayoutPanel1 = new FlowLayoutPanel();
             panelTopbar.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -102,6 +104,7 @@
             // panelTopbar
             // 
             panelTopbar.BackColor = Color.FromArgb(30, 41, 59);
+            panelTopbar.Controls.Add(button1);
             panelTopbar.Controls.Add(label1);
             panelTopbar.Controls.Add(button4);
             panelTopbar.Controls.Add(button3);
@@ -112,6 +115,22 @@
             panelTopbar.Name = "panelTopbar";
             panelTopbar.Size = new Size(1280, 70);
             panelTopbar.TabIndex = 1;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Transparent;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(444, 12);
+            button1.Name = "button1";
+            button1.Size = new Size(102, 50);
+            button1.TabIndex = 6;
+            button1.Text = "Doktor Oyla";
+            button1.TextAlign = ContentAlignment.MiddleLeft;
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // button6
             // 
@@ -132,7 +151,7 @@
             panel1.BackColor = Color.FromArgb(30, 41, 59);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
-            panel1.Location = new Point(444, 106);
+            panel1.Location = new Point(20, 99);
             panel1.Name = "panel1";
             panel1.Size = new Size(359, 220);
             panel1.TabIndex = 2;
@@ -159,15 +178,25 @@
             label2.TabIndex = 0;
             label2.Text = "Hoş Geldiniz!!!";
             // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.AutoScroll = true;
+            flowLayoutPanel1.Location = new Point(676, 111);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(572, 363);
+            flowLayoutPanel1.TabIndex = 3;
+            // 
             // MainPageTest
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(30, 30, 30);
+            Controls.Add(flowLayoutPanel1);
             Controls.Add(panel1);
             Controls.Add(panelTopbar);
             Name = "MainPageTest";
             Size = new Size(1280, 720);
+            Load += MainPageTest_Load;
             panelTopbar.ResumeLayout(false);
             panelTopbar.PerformLayout();
             panel1.ResumeLayout(false);
@@ -185,5 +214,7 @@
         private Panel panel1;
         private Label label3;
         private Label label2;
+        private Button button1;
+        private FlowLayoutPanel flowLayoutPanel1;
     }
 }

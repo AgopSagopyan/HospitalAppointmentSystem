@@ -6,6 +6,7 @@ using MySql.Data.MySqlClient;
 using HospitalAppointmentSystem.services;
 using HospitalAppointmentSystem.views;
 using HospitalAppointmentSystem.views.admin;
+using HospitalAppointmentSystem.views.prefabs;
 
 namespace HospitalAppointmentSystem
 {

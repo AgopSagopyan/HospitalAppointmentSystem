@@ -38,5 +38,10 @@ namespace HospitalAppointmentSystem.views
         {
             NavigationService.NavigateTo(new PrescriptionPage());
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            NavigationService.NavigateTo(new LoginPage());
+        }
     }
 }
