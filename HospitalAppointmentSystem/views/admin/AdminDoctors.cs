@@ -46,17 +46,18 @@ namespace HospitalAppointmentSystem.views.admin
 
         private void btn_addDoctor_Click_1(object sender, EventArgs e)
         {
-            if(txt_doctorName.Text != null && txt_doctorEmail.Text != null && txt_doctorPassword.Text != null && combo_profession.Text != null && lastUploadedFilePath != null)
+            if (txt_doctorName.Text != null && txt_doctorEmail.Text != null && txt_doctorPassword.Text != null && combo_profession.Text != null && lastUploadedFilePath != null)
             {
                 _repo.AddDoctor(txt_doctorName.Text, txt_doctorEmail.Text, txt_doctorPassword.Text, combo_profession.Text, lastUploadedFilePath);
 
-            } else
+            }
+            else
             {
                 MessageBox.Show("Fill All Spaces");
             }
 
 
-                dataGridView1.DataSource = _repo.GetAllDoctors();
+            dataGridView1.DataSource = _repo.GetAllDoctors();
         }
 
         private void btn_imagePicker_Click(object sender, EventArgs e)
@@ -147,6 +148,11 @@ namespace HospitalAppointmentSystem.views.admin
         }
 
         private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void combo_profession_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

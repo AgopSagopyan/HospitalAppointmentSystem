@@ -114,6 +114,7 @@
             combo_profession.Name = "combo_profession";
             combo_profession.Size = new Size(247, 23);
             combo_profession.TabIndex = 8;
+            combo_profession.SelectedIndexChanged += combo_profession_SelectedIndexChanged;
             // 
             // openFileDialog1
             // 
